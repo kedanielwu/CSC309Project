@@ -1,0 +1,14 @@
+group5
+Feedback: if you need to deprioritize any features it would be the following:
+
+-Any user will have the option to block another user which prevents both users’ postings
+and profile from being visible to each other and disables communication between the
+two.
+- Any user will have option to report another user which may result in reported user being
+deleted, banned etc.
+- Once a report has been resolved by an admin, a message (via inbox/chat or email) will be sent to the users involved in the report.
+-Extra Features
+
+I would suggest allowing users to browse profiles in addition to searching
+
+Mark: 9/10
