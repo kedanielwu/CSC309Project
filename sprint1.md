@@ -3,7 +3,7 @@
 ##Due date: November 24th 2016
 
 ##Tasks
-1. Database setup (Ke)
+1. Database setup (Ke, Jeremy)
     - GET/POST users (check design.md for required user information) to a database
     - GET/POST listings (check design.md for required listing information) to a database
     - Simple front-end page to display a specific user or listing
