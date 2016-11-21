@@ -9,7 +9,7 @@
     - Simple front-end page to display a specific user or listing
         - Very minimal styling
     
-2. User authorization ()
+2. User authorization (David)
     - Implement Login/Signup
         - Must differentiate between a user and an admin using sessions, cookies etc.
     - Simple front-end page to allow a user to enter login/signup information
