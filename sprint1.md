@@ -1,8 +1,8 @@
-Sprint 1
+#Sprint 1
 
-Due date: November 24th 2016
+##Due date: November 24th 2016
 
-Tasks
+##Tasks
 1. Database setup (Ke)
     - GET/POST users (check design.md for required user information) to a database
     - GET/POST listings (check design.md for required listing information) to a database
@@ -15,7 +15,7 @@ Tasks
     - Simple front-end page to allow a user to enter login/signup information
         - Very minimal styling
         
-Additional Notes
+##Additional Notes
 In case we do not have time or it is too difficult to implement a chat service,
 we will instead allow users to post comments on other users' profiles to fulfill 
 the 'social' requirement for the project.
