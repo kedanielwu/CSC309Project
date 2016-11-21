@@ -13,23 +13,25 @@
 - user
 	- ID
 	- Name
-	- Email
+	- Email/Phone #
 	- Password
 	- Picture
-	- Discription
-	- listing history (to server)
-	- report history	
+	- Profile description
+	- Listing history (to server)
+	- Report history
+	- Type (admin or regular user)
 - listing
+	- User object reference (the seller)
 	- ID
 	- Title
 	- Picture
-	- Discription
-	- Comments 
-	- Status (open/requested?/closed)
+	- Listing description
+	- Comments
+	- Status (open/pending/closed)
 - ticket(low priority)
 	- ID
-	- two user ID or listing ID
-	- Discription
+	- 2 user IDs or a listing ID
+	- Description
 
 ##Abstract API
 
@@ -40,11 +42,13 @@
 		- create new user with this id, other info will be packed as json object, redirect on success and error message on failure
 	3. PUT /user?id=id&
 		- modify the user object and update database 
-	4. Auth
-	5. Thrid party login
+	4. Authorization
+	5. Third party login
 2. listing module
 	1. GET /listing?id=id
 	2. POST /listing?id=id
 	3. PUT /listing?id=id&
 3. search module
+	1. GET /listing?id=id
+	2. GET /user?id=id
 4. message module
