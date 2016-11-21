@@ -18,4 +18,5 @@
 ##Additional Notes
 In case we do not have time or it is too difficult to implement a chat service,
 we will instead allow users to post comments on other users' profiles to fulfill 
-the 'social' requirement for the project.
+the 'social' requirement for the project
+The chat service and admin tickets will be lowest priority for now.
