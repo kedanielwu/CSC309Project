@@ -1,0 +1,31 @@
+[
+	{
+		"id": "Jeremy",
+		"name": "Jeremy Sant",
+		"email": "Jeremy.Sant@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"id": "Ke",
+		"name": "Ke Daniel Wu",
+		"email": "Ke@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"id": "Anne",
+		"name": "Anne Tran",
+		"email": "Anne@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"id": "David",
+		"name": "David Zhang",
+		"email": "David@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	}
+
+]
