@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var users = require('./routes/user-routes');
+var listings = require('./routes/listing-routes');
 var app = express();
 
 //app.use(express.static(__dirname + '/assets'));
@@ -25,7 +26,12 @@ app.get('/users', users.findAll);
 
 //app.post('/adduser', users.addOne);
 
+app.get('/createlisting', function(req, res) {
+    res.sendfile('createListing.html');
+});
 
+app.post('/createlisting', listings.addListing);
+app.get('/listings', listings.findAll);
 // Start the server
 app.listen(3000);
 console.log('Listening on port 3000');

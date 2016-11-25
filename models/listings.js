@@ -6,23 +6,20 @@ var Schema = mongoose.Schema;
 var listingSchema = new Schema(
     {
         user_id: {
-            type: String, required: true, unique: true //is this a username or just a number id?
-        },
-        id: {
-            type: int, requried: true, unique: true
+            type: String, required: true//is this a username or just a number id?
         },
         title: {
             type: String, required: true
         },
         picture: {
             type: String //url of image
-        }
+        },
         description: {
-            type: String
+            type: String, required: true
         },
         comments: [{
-            user_id: {type: String, required: true},
-            message: {type: String, required: true},
+            user_id: {type: String},
+            message: {type: String}
         }],
         status: {
             type: String
