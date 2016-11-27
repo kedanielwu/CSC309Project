@@ -22,7 +22,10 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 //     res.sendfile('index.html');
 // });
 
-app.get('/users', users.findAll);
+app.get('/users', users.find);
+app.post('/users', users.addUser);
+app.put('/users', users.updateUser);
+app.delete('/users', users.removeUser);
 
 //app.post('/adduser', users.addOne);
 
