@@ -28,13 +28,11 @@ app.put('/users', users.updateUser);
 app.delete('/users', users.removeUser);
 
 //app.post('/adduser', users.addOne);
-
-app.get('/createlisting', function(req, res) {
-    res.sendfile('createListing.html');
-});
-
-app.post('/createlisting', listings.addListing);
-app.get('/listings', listings.findAll);
+app.get('/listings', listings.find);
+app.post('/listings'. listings.addListing);
+app.put('/listing', listings.updateListing);
+app.post('/comments', listings.postComments);
+app.delete('/listing', listings.removeListing);
 // Start the server
 app.listen(3000);
 console.log('Listening on port 3000');
