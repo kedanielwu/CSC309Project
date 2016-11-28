@@ -29,7 +29,7 @@ app.delete('/users', users.removeUser);
 
 //app.post('/adduser', users.addOne);
 app.get('/listings', listings.find);
-app.post('/listings'. listings.addListing);
+app.post('/listings', listings.addListing);
 app.put('/listing', listings.updateListing);
 app.post('/comments', listings.postComments);
 app.delete('/listing', listings.removeListing);
