@@ -31,7 +31,7 @@ app.delete('/users', users.removeUser);
 app.get('/listings', listings.find);
 app.post('/listings', listings.addListing);
 app.put('/listing', listings.updateListing);
-app.post('/comments', listings.postComments);
+app.post('/comments', listings.postComment);
 app.delete('/listing', listings.removeListing);
 // Start the server
 app.listen(3000);
