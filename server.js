@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 
 var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
+var search = require('./routes/search-routes.js');
 var app = express();
 
 //app.use(express.static(__dirname + '/assets'));
@@ -33,6 +34,11 @@ app.post('/listings', listings.addListing);
 app.put('/listing', listings.updateListing);
 app.post('/comments', listings.postComment);
 app.delete('/listing', listings.removeListing);
+
+/* Search */
+// Takes params 'user' or 'listing' to search for.
+app.get('/search', search.search);
+
 // Start the server
 app.listen(3000);
 console.log('Listening on port 3000');

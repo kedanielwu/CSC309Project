@@ -9,7 +9,7 @@ var userSchema = new Schema(
             type: String, required: true, unique: true //is this a username or just a number id?
         },
         name: {
-            type: String, requried: true
+            type: String, required: true //TODO: consider adding username
         },
         email: {
             type: String, required: true, unique: true

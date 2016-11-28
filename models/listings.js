@@ -33,4 +33,20 @@ var listingSchema = new Schema(
     }
 );
 
+// Create the text indexes to be searched
+// https://docs.mongodb.com/v3.2/core/index-text/
+// http://mongoosejs.com/docs/guide.html#indexes
+listingSchema.index(
+  {
+    // Indexes
+    title: "text",
+    description: "text"
+  },
+  {
+    // Weights
+    title: 5,
+    description: 1
+  }
+);
+
 module.exports = mongoose.model('Listing', listingSchema);
