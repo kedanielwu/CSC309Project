@@ -32,9 +32,10 @@ var userSchema = new Schema(
     }
 );
 
-
+// http://mongoosejs.com/docs/promises.html
+mongoose.Promise = global.Promise;
 // Doc for Mongoose Connections: http://mongoosejs.com/docs/connections
-mongoose.connect('mongodb://localhost/database');
+mongoose.connect('mongodb://localhost/database'); //TODO: move to server.js?
 
 // Doc for Mongoose Models: http://mongoosejs.com/docs/models
 module.exports = mongoose.model('User', userSchema);
