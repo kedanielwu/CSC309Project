@@ -20,6 +20,7 @@ app.use(express.static(__dirname + '/startbootstrap-new-age-gh-pages'));
 app.set('views', __dirname);
 app.set('view engine', 'html');
 app.engine('.html', require('ejs').__express);
+app.set('view engine', 'ejs');
 
 // The request body is received on GET or POST.
 // A middleware that just simplifies things a bit.
@@ -30,8 +31,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 // Get the index page:
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
+    //res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
     // res.sendFile(__dirname + '/createListing.html');
+    res.render('pages/index');
 });
 
 app.get('/users', users.find);
@@ -51,6 +53,9 @@ app.delete('/listing', listings.removeListing);
 /* Search */
 // Takes params 'user' or 'listing' to search for.
 app.get('/search', search.search);
+
+// Load ejs pages
+
 
 // Start the server
 app.listen(3000);
