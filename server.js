@@ -55,24 +55,24 @@ app.get('/search', search.search);
 app.get('/', function(req, res) {
     //res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
     // res.sendFile(__dirname + '/createListing.html');
-    res.render('pages/index');
+    res.render('pages/index', {title: 'Index'});
 });
 
 // testing front end - for quick access
 app.get('/index_view', function(req, res) {
-    res.render('pages/index');
+    res.render('pages/index', {title: 'Index'});
 });
 
 app.get('/profile_view', function(req, res) {
-    res.render('pages/profile');
+    res.render('pages/profile', {title: 'Profile'});
 });
 
 app.get('/search_view', function(req, res) {
-    res.render('pages/search');
+    res.render('pages/search', {title: 'Search Results'});
 });
 
 app.get('/signup_view', function(req, res) {
-    res.render('pages/signup');
+    res.render('pages/signup', {title: 'Sign Up'});
 });
 
 // Start the server

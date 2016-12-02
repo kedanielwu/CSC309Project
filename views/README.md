@@ -60,6 +60,8 @@ app.get('/index_view', function(req, res) {
 });
 ```
 
+Run the server using `node server.js` then go to the route you specified to see the rendered view.
+
 #### Embedded Javascript
 
 In EJS we can call and use Javascript functions and variables.
