@@ -10,6 +10,7 @@ var app = express();
 
 //app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/startbootstrap-new-age-gh-pages'));
 
 // The request body is received on GET or POST.
 // A middleware that just simplifies things a bit.
@@ -19,14 +20,17 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // Get the index page:
-// app.get('/', function(req, res) {
-//     res.sendfile('index.html');
-// });
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
+    // res.sendFile(__dirname + '/createListing.html');
+});
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
 app.put('/users', users.updateUser);
 app.delete('/users', users.removeUser);
+
+// app.get('/users', users.find);
 
 //app.post('/adduser', users.addOne);
 app.get('/listings', listings.find);
