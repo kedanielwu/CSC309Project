@@ -7,9 +7,18 @@ var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
 var search = require('./routes/search-routes.js');
 var app = express();
+var mongoose = require('mongoose');
+
+
+// http://mongoosejs.com/docs/promises.html
+//mongoose.Promise = global.Promise; //Causes Server not to run so I commented out. PLEASE FIX
+// Doc for Mongoose Connections: http://mongoosejs.com/docs/connections
+mongoose.connect('mongodb://localhost/database');
 
 //app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/'));
+app.set('views', __dirname);
+app.set('view engine', 'html');
 
 // The request body is received on GET or POST.
 // A middleware that just simplifies things a bit.

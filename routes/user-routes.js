@@ -14,6 +14,7 @@ exports.find = function(req, res) {
             if (err) throw err;
             console.log(User)
             res.send(User);
+            res.render('profile', User);
         });
     }
     else{
@@ -45,27 +46,27 @@ exports.updateUser = function(req, res) {
     if(req.query.id){
             if(req.query.name){
                 User.update({"_id": req.query.id},
-                          { $set:{"name": req.query.name}});
+                          { $set:{"name": req.query.name}}, function(err, User){});
             }
             if(req.query.email){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.email}});          
+                          { $set:{"email": req.query.email}}, function(err, User){});          
             }
             if(req.query.password){
                  User.update({"_id": req.query.id},
-                          { $set:{"password": req.query.password}});          
+                          { $set:{"password": req.query.password}}, function(err, User){});          
             }
             if(req.query.picture){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.picture}});          
+                          { $set:{"email": req.query.picture}}, function(err, User){});          
             }
             if(req.query.description){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.description}});          
+                          { $set:{"email": req.query.description}}, function(err, User){});          
             }
             if(req.query.userType){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.userType}});          
+                          { $set:{"email": req.query.userType}}, function(err, User){});          
             }
             res.send("Updated");
     }
