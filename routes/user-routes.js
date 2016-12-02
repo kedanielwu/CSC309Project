@@ -1,4 +1,5 @@
 var User = require('../models/users');
+var Listing = require('../models/listings');
 
 /**
  * Finds users.
@@ -12,8 +13,7 @@ exports.find = function(req, res) {
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
             if (err) {return res.send("");}
-            // console.log(User)
-            res.send(User);
+            res.render('startbootstrap-new-age-gh-pages/profile', User[0]);
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
@@ -70,15 +70,15 @@ exports.updateUser = function(req, res) {
             }
             if(req.query.picture){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.picture}}, function(err, User){});          
+                          { $set:{"picture": req.query.picture}}, function(err, User){});          
             }
             if(req.query.description){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.description}}, function(err, User){});          
+                          { $set:{"description": req.query.description}}, function(err, User){});          
             }
             if(req.query.userType){
                  User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.userType}}, function(err, User){});          
+                          { $set:{"userType": req.query.userType}}, function(err, User){});          
             }
             res.send("Updated");
     }

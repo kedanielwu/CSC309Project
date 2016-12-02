@@ -2,7 +2,7 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
-
+var mongoose = require('mongoose');
 var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
 var search = require('./routes/search-routes.js');
@@ -19,6 +19,7 @@ app.use(express.static(__dirname + '/startbootstrap-new-age-gh-pages'));
 
 app.set('views', __dirname);
 app.set('view engine', 'html');
+app.engine('.html', require('ejs').__express);
 
 // The request body is received on GET or POST.
 // A middleware that just simplifies things a bit.
