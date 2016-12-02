@@ -7,8 +7,6 @@ var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
 var search = require('./routes/search-routes.js');
 var app = express();
-var mongoose = require('mongoose');
-
 
 // http://mongoosejs.com/docs/promises.html
 //mongoose.Promise = global.Promise; //Causes Server not to run so I commented out. PLEASE FIX
@@ -17,6 +15,8 @@ mongoose.connect('mongodb://localhost/database');
 
 //app.use(express.static(__dirname + '/assets'));
 app.use(express.static(__dirname + '/'));
+app.use(express.static(__dirname + '/startbootstrap-new-age-gh-pages'));
+
 app.set('views', __dirname);
 app.set('view engine', 'html');
 
@@ -28,14 +28,17 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // Get the index page:
-// app.get('/', function(req, res) {
-//     res.sendfile('index.html');
-// });
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
+    // res.sendFile(__dirname + '/createListing.html');
+});
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
 app.put('/users', users.updateUser);
 app.delete('/users', users.removeUser);
+
+// app.get('/users', users.find);
 
 //app.post('/adduser', users.addOne);
 app.get('/listings', listings.find);
@@ -51,3 +54,4 @@ app.get('/search', search.search);
 // Start the server
 app.listen(3000);
 console.log('Listening on port 3000');
+

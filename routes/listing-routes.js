@@ -17,6 +17,9 @@ exports.addListing = function(req, res) {
     })
 };
 
+exports.findRecent = function(req, res) {
+    res.send('Success!!!!!!!!');
+}
 
 exports.find = function(req, res) {
     console.log("GET /listing received");

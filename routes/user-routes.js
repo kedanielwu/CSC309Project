@@ -11,8 +11,20 @@ exports.find = function(req, res) {
 
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
-            if (err) throw err;
-            console.log(User)
+            if (err) {return res.send("");}
+            // console.log(User)
+            res.send(User);
+        });
+    } else if(req.query.username){
+        User.find({"username": req.query.username}, function(err, User) {
+            if (err) {return res.send("");}
+            // console.log(User)
+            res.send(User);
+        });
+    } else if(req.query.email){
+        User.find({"email": req.query.email}, function(err, User) {
+            if (err) {return res.send("");}
+            // console.log(User)
             res.send(User);
             res.render('profile', User);
         });
@@ -20,7 +32,7 @@ exports.find = function(req, res) {
     else{
         User.find({}, function(err, allUsers) {
         if (err) throw err;
-        console.log(allUsers)
+        // console.log(allUsers)
         res.send(allUsers);
         });
     }
