@@ -5,17 +5,20 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema(
     {
-        id: {
-            type: String, required: true, unique: true //is this a username or just a number id?
-        },
-        name: {
-            type: String, required: true //TODO: consider adding username
+        username: {
+            type: String, required: true, unique: true
         },
         email: {
             type: String, required: true, unique: true
         },
         password: {
             type: String, required: true
+        },
+        area: {
+            type: String
+        },
+        phoneNumber: {
+            type: String
         },
         picture: {
             type: String //url of image
@@ -25,7 +28,7 @@ var userSchema = new Schema(
         },
         userType: {
             type: String, required: true
-        }
+        },
     },
     {
         collection: 'users'
