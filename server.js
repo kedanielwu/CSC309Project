@@ -17,9 +17,9 @@ mongoose.connect('mongodb://localhost/database');
 app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/startbootstrap-new-age-gh-pages'));
 
-app.set('views', __dirname);
-app.set('view engine', 'html');
-app.engine('.html', require('ejs').__express);
+// app.set('views', __dirname);
+// app.set('view engine', 'html');
+// app.engine('.html', require('ejs').__express);
 app.set('view engine', 'ejs');
 
 // The request body is received on GET or POST.
@@ -29,12 +29,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
-// Get the index page:
-app.get('/', function(req, res) {
-    //res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
-    // res.sendFile(__dirname + '/createListing.html');
-    res.render('pages/index');
-});
+/*** Routes ***/
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
@@ -56,6 +51,29 @@ app.get('/search', search.search);
 
 // Load ejs pages
 
+// Get the index page:
+app.get('/', function(req, res) {
+    //res.sendFile(__dirname + '/startbootstrap-new-age-gh-pages/index.html');
+    // res.sendFile(__dirname + '/createListing.html');
+    res.render('pages/index');
+});
+
+// testing front end - for quick access
+app.get('/index_view', function(req, res) {
+    res.render('pages/index');
+});
+
+app.get('/profile_view', function(req, res) {
+    res.render('pages/profile');
+});
+
+app.get('/search_view', function(req, res) {
+    res.render('pages/search');
+});
+
+app.get('/signup_view', function(req, res) {
+    res.render('pages/signup');
+});
 
 // Start the server
 app.listen(3000);
