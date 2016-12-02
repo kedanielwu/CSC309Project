@@ -94,7 +94,7 @@ ie.
 
 #### Other
 
-For further docs/tut see:
-https://scotch.io/tutorials/use-ejs-to-template-your-node-application
-https://www.codementor.io/nodejs/tutorial/node-with-express-and-ejs
-http://www.embeddedjs.com/getting_started.html
+For further docs/tut see:\n
+https://scotch.io/tutorials/use-ejs-to-template-your-node-application\n
+https://www.codementor.io/nodejs/tutorial/node-with-express-and-ejs\n
+http://www.embeddedjs.com/getting_started.html\n
