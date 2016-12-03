@@ -100,6 +100,7 @@ app.post('/users', users.addUser);
 app.put('/users', user, users.updateUser);
 app.delete('/users', admin, users.removeUser);
 
+//app.get('/listings', listings.find);
 app.get('/listings', listings.find);
 app.post('/listings', user, listings.addListing);
 app.put('/listing', user, listings.updateListing);
