@@ -9,11 +9,17 @@ var Listing = require('../models/listings');
  */
 exports.find = function(req, res) {
     console.log('find User');
+    var listings;
 
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
+		Listing.find({"user_id": req.query.id}, function(err, data){
+            if (err) throw err;
+            		listings = data;
+        	});
+		console.log(listings);
             if (err) {return res.send("");}
-            res.render('startbootstrap-new-age-gh-pages/profile', User[0]);
+            res.render('views/profile', {User:User[0],listings:listings});
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
