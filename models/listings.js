@@ -12,7 +12,7 @@ var listingSchema = new Schema(
             type: String, required: true
         },
         picture: {
-            type: String //url of image
+            type:String,default:"https://www.retirementhomes.com/homes/static/RHV5/images/default.jpg" //url of image
         },
         description: {
             type: String, required: true
