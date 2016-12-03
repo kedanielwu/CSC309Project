@@ -116,8 +116,12 @@ app.get('/', function(req, res) {
     res.render('pages/index', {title: 'Index'});
 });
 
-app.get('/index_view', function(req, res) {
-    res.render('pages/index', {title: 'Index'});
+app.get('/signup', function(req, res) {
+    res.render('pages/signup', {title: 'Sign Up'});
+});
+
+app.get('/login', function(req, res) {
+    res.render('pages/login', {title: 'Log In'});
 });
 
 app.get('/profile_view', function(req, res) {
