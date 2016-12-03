@@ -41,6 +41,34 @@
 		"description": "Brand new pillows!!",
 		"price": "$20"
 	},
+  {
+    "user_id": "584203c95b58fc289fbe77a7",
+    "title": "computer",
+    "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
+    "description": "computer!!!",
+    "price": "$600"
+  },
+  {
+    "user_id": "584203c95b58fc289fbe77a8",
+    "title": "linux computer2",
+    "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
+    "description": "bad computer!!!",
+    "price": "$600"
+  },
+  {
+    "user_id": "584203c95b58fc289fbe77a9",
+    "title": "another computer windows",
+    "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
+    "description": "good computer",
+    "price": "$600"
+  },
+  {
+    "user_id": "584203c95b58fc289fbe77b0",
+    "title": "computer 4 macbook",
+    "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
+    "description": "greatcomputer",
+    "price": "$600"
+  }
 	{
 		"user_id": "58431d1c633bf1a5d5c9adf8",
 		"title": "Burger Earmuffs1",
@@ -62,6 +90,4 @@
 		"description": "Brand new clarinet!! As seen on Spongebob. Condition 10/10",
 		"price": "$375"
 	}
-
-
 ]
