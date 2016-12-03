@@ -15,11 +15,9 @@ exports.find = function(req, res) {
         User.find({"_id": req.query.id}, function(err, User) {
 		Listing.find({"user_id": req.query.id}, function(err, data){
             if (err) throw err;
-            		listings = data;
+            		res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
         	});
-		console.log(listings);
-            if (err) {return res.send("");}
-            res.send(User);
+	
             // res.render('views/profile', {User:User[0],listings:listings});
         });
     } else if(req.query.username){

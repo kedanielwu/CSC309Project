@@ -11,44 +11,52 @@
       <section id="UserInfo">
           <div class="container">
               <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12"><h2><%= username %></h2></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12"><h2><%= User.username %></h2></div>
     
                       
             
                   <div class = "col-xs-6 col-md-4">
-                      <img id="profilePicture" src="<%= picture %>" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;">             
+                      <img id="profilePicture" src="<%= User.picture %>" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;">             
                   </div>
                   <div class = "col-xs-6 col-md-4">
                       <h1>Discription:</h1>
-                      <p id="description"><%= description %></p>                
+                      <p id="description"><%= User.description %></p>                
                   </div>
                   <div class = "col-xs-6 col-md-4">
                       <h1>Contact Information:</h1>
-                      <p>Phone: <%= phoneNumber %></p>
-                      <p>Email: <%= email %></p>               
+                      <p>Phone: <%= User.phoneNumber %></p>
+                      <p>Email: <%= User.email %></p>               
                   </div>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+
                       <section id="listings">
         <div class="container">
             <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12"><h2><%= User.username %>'s Listings</h2></div>
   
                     
-          
-                <div class = "col-xs-12 col-sm-12 col-md-12">
-                    <ul>
+
+            <div class = "col-xs-12 col-sm-12 col-md-12">
+        <table>
 		    <% for(var i=0; i<listings.length; i++) {%>
-		      <li><%= listings[i].picture %></li>
+		      <tr><td class="col-md-6 col-md-offset-3"><img src="<%= listings[i].picture %>" alt="Listing Picture" class="img-rounded" style="width:80px;height:80px;"></td>
+
+          <td class="col-md-6 col-md-offset-3"><p><%= listings[i].title %></td>
+          <td class="col-md-6 col-md-offset-3" style="color: Chartreuse;"><p><%= listings[i].price %></td>
+          </tr>
+         
 		    <% } %>
-		    </ul>           
+		    </table>           
                 </div>
             
                 <!-- <div class="col-md-8 col-md-offset-2">
                     <h2 class="section-heading">Discover what all the buzz is about!</h2>
                     <p>Our app is available on any mobile device! Download now to get started!</p>
-                </div> -->
-            </div>
-        </div>
-    </section>
+
                   
                   
                   <!-- <div class="col-md-8 col-md-offset-2">
@@ -58,7 +66,7 @@
               </div>
           </div>
       </section>
-    <header>
+
     <!--
 
     <section id="features" class="features">
