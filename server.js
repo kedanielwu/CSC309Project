@@ -27,9 +27,9 @@ app.use(session({
 	saveUnintialized: true
 }));
 
-app.set('views', __dirname);
-app.set('view engine', 'html');
-app.engine('.html', require('ejs').__express);
+// app.set('views', __dirname);
+// app.set('view engine', 'html');
+// app.engine('.html', require('ejs').__express);
 app.set('view engine', 'ejs');
 
 
@@ -66,28 +66,28 @@ var admin = function(req, res, next) { //only for admins
 	}
 };
 
-//Call to check current user
-app.get('/currentUser', function(req, res) {
-	res.send(req.session.user);
-});
+// //Call to check current user
+// app.get('/currentUser', function(req, res) {
+// 	res.send(req.session.user);
+// });
 
-//PAGE RESTRICTIONS
-app.get('/login', nonUser, function(req, res){ //login and signup links will be hidden, might not be necessary
-	res.render(__dirname + '/views/pages/login.html');
-});
+// //PAGE RESTRICTIONS
+// app.get('/login', nonUser, function(req, res){ //login and signup links will be hidden, might not be necessary
+// 	res.render(__dirname + '/views/pages/login.html');
+// });
 
-app.get('/admin', admin, function(req, res) {
-	res.render(__dirname + '/views/pages/admin.html'); //admin dashboard is only for admins
-});
+// app.get('/admin', admin, function(req, res) {
+// 	res.render(__dirname + '/views/pages/admin.html'); //admin dashboard is only for admins
+// });
 
-app.get('/signup', nonUser, function(req, res) {
-    res.render(__dirname + '/views/pages/signup.html');
-});
+// app.get('/signup', nonUser, function(req, res) {
+//     res.render(__dirname + '/views/pages/signup.html');
+// });
 
-// Get the index page:
-app.get('/', function(req, res) {
-    res.render(__dirname + '/views/pages/index.html');
-});
+// // Get the index page:
+// app.get('/', function(req, res) {
+//     res.render(__dirname + '/views/pages/index.html');
+// });
 
 app.get('/loginCheck', authorize.login);
 app.get('/logout', authorize.logout);
@@ -107,6 +107,36 @@ app.post('/comments', listings.postComment);
 /* Search */
 // Takes params 'user' or 'listing' to search for.
 app.get('/search', search.search);
+
+/* Testing ejs */
+// Get the index page:
+
+// testing front end - for quick access
+app.get('/', function(req, res) {
+    res.render('pages/index', {title: 'Index'});
+});
+
+app.get('/signup', function(req, res) {
+    res.render('pages/signup', {title: 'Sign Up'});
+});
+
+app.get('/login', function(req, res) {
+    res.render('pages/login', {title: 'Log In'});
+});
+
+app.get('/profile_view', function(req, res) {
+    res.render('pages/profile', {title: 'Profile'});
+});
+
+app.get('/search_view', function(req, res) {
+    res.render('pages/search', {title: 'Search Results'});
+});
+
+app.get('/signup_view', function(req, res) {
+    res.render('pages/signup', {title: 'Sign Up'});
+});
+
+
 
 app.listen(3000);
 console.log('Listening on port 3000');
