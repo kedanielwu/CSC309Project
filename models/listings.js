@@ -27,6 +27,8 @@ var listingSchema = new Schema(
         price: {
             type: String, required: true
         }
+        //TODO: Need a date-posted field
+        //TODO: How does the _id work? Is it automatic or do we enable it somewhere?
     },
     {
         collection: 'listings'
@@ -43,9 +45,11 @@ listingSchema.index(
     description: "text"
   },
   {
-    // Weights
-    title: 5,
-    description: 1
+    weights: {
+      // Weights
+      title: 5,
+      description: 1
+    }
   }
 );
 

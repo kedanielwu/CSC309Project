@@ -38,6 +38,29 @@
             </div>
         </div>
     </section>
+<!-- 
+    <section id="search_menu" class="bg-primary text-center">
+    </section> -->
+
+    <section id="search_results" class="bg-primary text-center">
+      <h2 class="section-heading">Showing <%= results.length %> results for '<%= searchText %>'</h2>
+
+      <form id="sort_results_form">
+        <div class="form-group row">  
+          <label>Sort by: </label>
+          <input id="sort_by_input" type="select"> 
+        </div>
+      </form>
+
+
+      <!-- Render either user or listing results depending on key -->
+      <% if (key == 'users') { %>
+        <% include ../partials/search/user_results %>
+      <% } %>
+      <% if (key == 'listings') { %>
+        <% include ../partials/search/listing_results %>
+      <% } %>
+    </section>
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>

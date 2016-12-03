@@ -1,0 +1,15 @@
+<!-- views/partials/search/listing_results.ejs -->
+
+<table>
+  <% for(var i=0; i < results.length; i++) { %>
+    <tr href=/listings?id=<%= results[i]._id %> >
+      <td>
+        <img src=<%= results[i].picture %> alt="listing-image">
+      </td>
+      <td><%= results[i].title %></td>
+      <td><%= results[i].description %></td>
+      <td><%= results[i].price %></td>
+      <td><%= results[i]._id %></td>
+    </tr>
+  <% } %>
+</table>
