@@ -73,20 +73,20 @@ app.get('/currentUser', function(req, res) {
 
 //PAGE RESTRICTIONS
 app.get('/login', nonUser, function(req, res){ //login and signup links will be hidden, might not be necessary
-	res.render(__dirname + '/views/login.html');
+	res.render(__dirname + '/views/pages/login.html');
 });
 
 app.get('/admin', admin, function(req, res) {
-	res.render(__dirname + '/views/admin.html'); //admin dashboard is only for admins
+	res.render(__dirname + '/views/pages/admin.html'); //admin dashboard is only for admins
 });
 
 app.get('/signup', nonUser, function(req, res) {
-    res.render(__dirname + '/views/signup.html');
+    res.render(__dirname + '/views/pages/signup.html');
 });
 
 // Get the index page:
 app.get('/', function(req, res) {
-    res.render(__dirname + '/views/index.html');
+    res.render(__dirname + '/views/pages/index.html');
 });
 
 app.get('/loginCheck', authorize.login);

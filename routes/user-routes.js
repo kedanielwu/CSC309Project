@@ -19,7 +19,8 @@ exports.find = function(req, res) {
         	});
 		console.log(listings);
             if (err) {return res.send("");}
-            res.render('views/profile', {User:User[0],listings:listings});
+            res.send(User);
+            // res.render('views/profile', {User:User[0],listings:listings});
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
@@ -32,7 +33,7 @@ exports.find = function(req, res) {
             if (err) {return res.send("");}
             // console.log(User)
             res.send(User);
-            res.render('profile', User);
+            // res.render('profile', User);
         });
     }
     else{

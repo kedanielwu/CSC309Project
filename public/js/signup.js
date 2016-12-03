@@ -1,6 +1,6 @@
 (function($) {
     "use strict"; // Start of use strict
-
+    
     function createUser() {
         let username = $("#username-input").val();
         let password = $("#password-input").val();
@@ -39,16 +39,11 @@
             function(data, status) {
                 console.log("Data: "+data+" and status: "+status);
                 //clear form fields
-                $("#username-input").val('');
-                $("#password-input").val('');
-                $("#confirm-password-input").val('');
-                $("#email-input").val('');
-                $("#phone-input").val('');
-                $("#area-input").val('');
-                $("#error-username").text("");
-                $("#error-password").text("");
-                alert("You are now a user!");
-                //redirect to index.html
+                $.get('/loginCheck', 'username='+username+'&password='+password, function(data, status){
+                    if (data == "login success") {
+                        window.location.replace("/");
+                    }
+                });
             }
         );        
     }
