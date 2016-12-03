@@ -27,6 +27,30 @@
                       <p>Phone: <%= phoneNumber %></p>
                       <p>Email: <%= email %></p>               
                   </div>
+                      <section id="listings">
+        <div class="container">
+            <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12"><h2><%= User.username %>'s Listings</h2></div>
+  
+                    
+          
+                <div class = "col-xs-12 col-sm-12 col-md-12">
+                    <ul>
+		    <% for(var i=0; i<listings.length; i++) {%>
+		      <li><%= listings[i].picture %></li>
+		    <% } %>
+		    </ul>           
+                </div>
+            
+                <!-- <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">Discover what all the buzz is about!</h2>
+                    <p>Our app is available on any mobile device! Download now to get started!</p>
+                </div> -->
+            </div>
+        </div>
+    </section>
+                  
+                  
                   <!-- <div class="col-md-8 col-md-offset-2">
                       <h2 class="section-heading">Discover what all the buzz is about!</h2>
                       <p>Our app is available on any mobile device! Download now to get started!</p>
