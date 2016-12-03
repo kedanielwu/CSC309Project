@@ -12,14 +12,14 @@ exports.login = function(req, res) {
             } else if (User[0].userType == "admin" &&
                 User[0].password == req.query.password) {
                 console.log(User);
-                req.session.userType = "admin";
+                req.session.ifAdmin = true;
                 req.session.user = req.query.username;
                 req.session.admin = true;
                 return res.send("admin login success");
             } else if (User[0].userType == "user" && 
                 User[0].password == req.query.password) {
                 console.log(User);
-                req.session.userType = "user";
+                req.session.ifAdmin = false;
                 req.session.user = req.query.username;
                 req.session.admin = true;
                 return res.send("user login success");
@@ -33,5 +33,5 @@ exports.login = function(req, res) {
 exports.logout = function (req, res) {
     console.log("Logging out...");
     req.session.destroy();
-    res.send("logout success!");  
+    res.render('pages/index', {title: "Homepage"});
 };

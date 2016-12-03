@@ -2,20 +2,24 @@
     "use strict"; // Start of use strict
 
     $.get('/currentUserType', "", function(data, status) {
-        if (data === "admin") {
+        // alert(data);
+        if (data) {
             //IN NAVBAR
             //add admin link
             $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
-
-            $("#welcome").text("Welcome back, admin!");
             $("#signup-button").hide();
             $("#login-button").hide();
         }
     });
 
     $.get('/currentUser', "", function(data, status) { //check if current user has signed up
-        if (data) {
+        if (!data) {
+            $("#navbar").append("<li><a class='page-scroll' href='/search'>SEARCH</a></li>");
+        }
+        else if (data) {
             //IN NAVBAR
+            //add search link
+            $("#navbar").append("<li><a class='page-scroll' href='/search'>SEARCH</a></li>");
             //add profile link
             $("#navbar").append("<li><a class='page-scroll' href='/profile?username='"+data+">PROFILE</a></li>");
             //add logout link
@@ -30,18 +34,18 @@
 
     $.get('/listings', "", function(data, status) {
         
-        for (let i=0; i < 4; i++) {
+        for (let i=0; i < 12; i++) {
             if (data[i] != undefined) {
-                // console.log(JSON.stringify(data[i]));
+                console.log(JSON.stringify(data[i]));
                 $("#recent").append(
-                    "<div class='col-sm-4 col-lg-4 col-md-5'>"+
+                    "<div class='col-sm-4 col-lg-4 col-md-4' class='recent-row'>"+
                         "<div class='thumbnail'>"+
-                            "<img src='"+data[i].picture+"' alt='listing-image'>"+
+                            "<img src='"+data[i].picture+"' alt='listing-image' class='recent-img'>"+
                             "<div class='caption'>"+
-                                "<h4 class='pull-right'>"+JSON.stringify(data[i].price)+"</h4>"+
-                                "<h4><a href='#''>"+JSON.stringify(data[i].title)+"</a>"+
-                                "</h4>"+
-                                "<p>"+JSON.stringify(data[i].description)+"</p>"+
+                                "<h3 class='pull-right'>"+data[i].price+"</h3>"+
+                                "<h3 style='text-align: left; font-size: 19px;'><a href='/listing?id="+data[i]._id+"'>"+data[i].title+"</a></h3>"+
+                                // "<p style='font-size: 12px; text-align: left'>Posted by "+data[i].user_id+" on "+data[i].date+"</p>"+
+                                "<p style='font-size: 14px; text-align: left'>"+data[i].description+"</p>"+
                             "</div>"+
                         "</div>"+
                     "</div>"

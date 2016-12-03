@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/views'));
 app.use(session({
 	secret: "notsosecret",
-	userType: "nonUser", 
+	ifAdmin: false, //true is user is an admin
 	resave: true,
 	saveUnintialized: true
 }));
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 //TYPES OF USERS
 var user = function(req, res, next) { //any users including admins
-	if (req.session && req.session.userType == "user" && 
+	if (req.session && !req.session.ifAdmin && 
 		req.session.user && req.session.admin) {
 		return next();
 	} else {
@@ -55,7 +55,7 @@ var nonUser = function(req, res, next) { //users without an account
 };
 
 var admin = function(req, res, next) { //only for admins
-	if (req.session && req.session.userType == "admin" && 
+	if (req.session && req.session.ifAdmin && 
 		req.session.user && req.session.admin) {
 		return next();
 	} else {
@@ -70,8 +70,8 @@ app.get('/currentUser', function(req, res) {
 });
 
 app.get('/currentUserType', function(req, res) {
-	console.log(req.session.userType)
-	res.send(req.session.userType);
+	console.log(req.session.ifAdmin)
+	res.send(req.session.ifAdmin);
 });
 
 // //PAGE RESTRICTIONS
@@ -97,15 +97,15 @@ app.get('/logout', authorize.logout);
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
-app.put('/users', users.updateUser);
-app.delete('/users', users.removeUser);
+app.put('/users', user, users.updateUser);
+app.delete('/users', admin, users.removeUser);
 
 app.get('/listings', listings.find);
-app.post('/listings', listings.addListing);
-app.put('/listing', listings.updateListing);
-app.delete('/listing', listings.removeListing);
+app.post('/listings', user, listings.addListing);
+app.put('/listing', user, listings.updateListing);
+app.delete('/listing', user, listings.removeListing);
 
-app.post('/comments', listings.postComment);
+app.post('/comments', user, listings.postComment);
 
 /* Search */
 // Takes params 'user' or 'listing' to search for.
