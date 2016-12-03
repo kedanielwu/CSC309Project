@@ -18,7 +18,7 @@
         } 
         if (username && password) {
             $.get('/loginCheck', 'username='+username+'&password='+password, function(data, status){
-                if (data == "login success") {
+                if (data) {
                     window.location.replace("/");
                 } else {
                     $("#error-confirm").text("Username and/or password are invalid.")
