@@ -40,7 +40,7 @@
                 console.log("Data: "+data+" and status: "+status);
                 //clear form fields
                 $.get('/loginCheck', 'username='+username+'&password='+password, function(data, status){
-                    if (data) {
+                    if (data.length>0) {
                         window.location.replace("/");
                     }
                 });
