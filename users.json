@@ -22,6 +22,30 @@
 		"email": "David@mail.utoronto.ca",
 		"password": "1234",
 		"userType": "admin"
-	}
+	},
+  {
+    "username": "Test1",
+    "email": "Test1@mail.utoronto.ca",
+    "password": "1234",
+    "userType": "admin"
+  },
+  {
+    "username": "Test2",
+    "email": "Test2@mail.utoronto.ca",
+    "password": "1234",
+    "userType": "admin"
+  },
+  {
+    "username": "Test3",
+    "email": "Test3@mail.utoronto.ca",
+    "password": "1234",
+    "userType": "admin"
+  },
+  {
+    "username": "Test4",
+    "email": "Test4@mail.utoronto.ca",
+    "password": "1234",
+    "userType": "admin"
+  }
 
 ]
