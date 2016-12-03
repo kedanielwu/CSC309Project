@@ -1,0 +1,27 @@
+[
+	{
+		"username": "Jeremy",	
+		"email": "Jeremy.Sant@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"username": "Ke",
+		"email": "Ke@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"username": "Anne",
+		"email": "Anne@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	},
+	{
+		"username": "David",
+		"email": "David@mail.utoronto.ca",
+		"password": "1234",
+		"userType": "admin"
+	}
+
+]

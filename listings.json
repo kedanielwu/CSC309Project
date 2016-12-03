@@ -1,0 +1,31 @@
+[
+	{
+		"user_id": "584203c95b58fc289fbe77a7",
+		"title": "Books",
+		"picture": "whytoread.com/wp-content/uploads/2015/03/best-books-book-youll-ever-read.jpg",
+		"description": "boooks!!",
+		"price": "$10"
+	},
+	{
+		"user_id": "584203c95b58fc289fbe77a7",
+		"title": "Shoes",
+		"picture": "images-eu.ssl-images-amazon.com/images/G/31/img15/Shoes/CatNav/p._V293117552_.jpg",
+		"description": "shoes!!!!!!",
+		"price": "$100"
+	},
+	{
+		"user_id": "584203c95b58fc289fbe77a7",
+		"title": "pillows",
+		"picture": "http://www.thrivehealth.ca/blog/wp-content/uploads/2013/04/pillows.jpg",
+		"description": "pillows!!!!!",
+		"price": "$20"
+	},
+	{
+		"user_id": "584203c95b58fc289fbe77a7",
+		"title": "computer",
+		"picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
+		"description": "computer!!!",
+		"price": "$600"
+	}
+
+]
