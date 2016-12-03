@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+
+  <main>
+    <header>
+        
+    </header>
+
+    <section id="download" class="download bg-primary text-center">
+        <h3 class="section-heading" style="margin-top:0px">Administrative Dashboard</h3>
+            <div class="container">
+                <div class="row">
+                
+                <!-- <p id="welcome">Welcome admin!<p> -->
+                    <form id="user-search">              
+                      <div class="form-group row">
+                        <label for="example-text-input" class="col-xs-2 col-form-label">Search users: </label>
+                        <div class="col-xs-10">
+                          <input class="form-control" type="text" id="username-input" name="user-input" placeholder="Press enter to search">
+                          <p class="error" id="error-confirm"></p>
+                        </div>
+                      </div>
+                    </form>
+                    <div id="user-results">
+                        
+                    </div>
+
+                    <form id="user-search">
+                      <div class="form-group row">
+                        <label for="example-text-input" class="col-xs-2 col-form-label">Search listings: </label>
+                        <div class="col-xs-10">
+                          <input class="form-control" type="text" id="listing-input" name="listing-input" placeholder="Press enter to search">
+                          <p class="error" id="error-confirm"></p>
+                        </div>
+                      </div>
+                    </form>
+
+                    <div id="user-results">
+                        
+                    </div>
+
+                    <form>              
+                      <div class="form-group row">
+                        <label for="example-text-input" class="col-xs-2 col-form-label">Populate database: </label>
+                        <div class="col-xs-10">
+                          <input class="form-control" type="text" id="file-input" name="file-input"> 
+                          <!-- TODO -->
+                          <p class="error" id="error-confirm"></p>
+                        </div>
+                      </div>
+                    </form>
+
+                    <a 
+                    
+                    class="btn btn-outline btn-xl page-scroll" id="delete-database">Delete database</a>
+
+            </div>
+        </div>
+    </section>
+  </main>
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+  <script src="../public/js/admin.js"></script>
+
+</body>
+
+</html>

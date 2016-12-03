@@ -38,14 +38,14 @@
                   <div class="form-group row">
                     <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="password" id="password-input" name="password">
+                      <input class="form-control" type="password" id="password-input" name="password" placeholder="Must be at least 5 characters">
                       <p class="error" id="error-password"></p>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="example-password-input" class="col-xs-2 col-form-label">Confirm password</label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="password" id="confirm-password-input" name="confirm-password">
+                      <input class="form-control" type="password" id="confirm-password-input" name="confirm-password" placeholder="Must be at least 5 characters">
                       <p class="error" id="error-confirm"></p>
                     </div>
                   </div>
@@ -73,6 +73,7 @@
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
+  <script src="../public/js/signup.js"></script>
 
 </body>
 

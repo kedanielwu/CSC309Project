@@ -95,18 +95,21 @@ exports.updateUser = function(req, res) {
 
 exports.removeUser = function(req, res) {
     console.log('Remove User');
+    console.log(JSON.stringify(req.query));
 
     if(req.query.id){
-        User.remove({"_id": req.query.id}, function(err, User) {
-            if (err) throw err;
-            console.log(User)
-            res.send(User);
-        });
-    }
-    else{
-      
+        if (req.query.id=="all") {
+            User.remove({});
+            return res.render('/admin');
+        } else {
+            User.remove({"_id": req.query.id}, function(err, User) {
+                if (err) throw err;
+                console.log(User)
+                res.send(User);
+            });
+        }
+    } else{
         console.log("Error: need user id")
-
     }
 };
 

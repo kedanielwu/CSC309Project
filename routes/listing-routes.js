@@ -27,7 +27,7 @@ exports.find = function(req, res) {
         Listing.find({"_id": req.query.id}, function(err, data){
             if (err) throw err;
             //array of one listing
-            res.send(data);
+            res.render('pages/listing', data[0]);
         })
     }
     else {

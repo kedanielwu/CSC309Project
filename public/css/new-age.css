@@ -49,8 +49,9 @@ h3,
 h4,
 h5,
 h6 {
+  
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
-  font-weight: 200;
+  font-weight: 400;
   letter-spacing: 1px;
 }
 
@@ -64,10 +65,14 @@ p {
   border-color: rgba(34, 34, 34, 0.05);
   -webkit-transition: all 0.35s;
   -moz-transition: all 0.35s;
+
   transition: all 0.35s;
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
   font-weight: 200;
   letter-spacing: 1px;
+}
+ .navbar-header .navbar-brand {
+  font-size: 25px;
 }
 .navbar-default .navbar-header .navbar-brand {
   font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
@@ -88,7 +93,7 @@ p {
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 11px;
+  font-size: 16px;
 }
 .navbar-default .nav > li > a,
 .navbar-default .nav > li > a:focus {
@@ -152,8 +157,9 @@ header {
   width: 100%;
   min-height: auto;
   overflow-y: hidden;
-  background: url(".img/diagonal_striped_brick.png"), #7b4397;
-  background: url(".img/diagonal_striped_brick.png"), -webkit-linear-gradient(to left, #7b4397, #dc2430);
+  background: url("http://i0.wp.com/38.media.tumblr.com/0548a184b645a3a79d150208b9020eb9/tumblr_nr2569nqX01qze3hdo1_r2_500.gif?resize=500%2C708"), #7b4397;
+  background: url("http://i0.wp.com/38.media.tumblr.com/0548a184b645a3a79d150208b9020eb9/tumblr_nr2569nqX01qze3hdo1_r2_500.gif?resize=500%2C708"),
+   -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background: url("http://i0.wp.com/38.media.tumblr.com/0548a184b645a3a79d150208b9020eb9/tumblr_nr2569nqX01qze3hdo1_r2_500.gif?resize=500%2C708");
     /*http://66.media.tumblr.com/e405e647203d9a98a59aea9935515f65/tumblr_inline_mwbs0niDWP1qkc0d3.gif")*/
   /*, linear-gradient(to left, #7b4397, #dc2430)*/
@@ -166,11 +172,17 @@ header .header-content {
   position: relative;
 }
 header .header-content .header-content-inner {
+
   position: relative;
   max-width: 500px;
   margin: 0 auto;
 }
 header .header-content .header-content-inner h1 {
+  
+  background-color: rgba(144, 75, 107,.5);
+  /*border-color: rgba(255,255,255,.5);*/
+  border-radius: 3px;
+  /*border-style: solid;*/
   margin-top: 0;
   margin-bottom: 30px;
   font-size: 30px;
@@ -202,10 +214,11 @@ header .device-container .screen img {
     max-width: none;
     margin: 0;
     position: absolute;
-    top: 50%;
+    top: 48%;
     transform: translateY(-50%);
   }
   header .header-content .header-content-inner h1 {
+
     font-size: 35px;
   }
   header .device-container {
@@ -216,7 +229,11 @@ header .device-container .screen img {
 }
 @media (min-width: 992px) {
   header .header-content .header-content-inner h1 {
-    font-size: 50px;
+    padding: 20px;
+    color: white;
+    /*#223043;*/
+    /*border-style: solid;*/
+    font-size: 70px;
   }
 }
 section {
@@ -224,6 +241,9 @@ section {
 }
 section h2 {
   font-size: 50px;
+}
+section h3 {
+  font-size: 40px;
 }
 section.download {
   padding: 150px 0;
@@ -336,7 +356,15 @@ section.cta .overlay {
   padding-right: 0;
   padding-left: 0;
 }
-.btn-outline, #signup-submit, #login-submit{
+.btn {
+  background-color: #fdcc52;
+  opacity: .9;
+  /*background-color: rgba(253, 190, 163,.6);*/
+  /*background-color: rgba(144, 75, 107,.4);*/
+  /*background-color: rgba(255, 255, 255,.2);*/
+  font-weight: bold;
+}
+.btn-outline, #signup-submit, #login-submit, #delete-database{
   color: white;
   border-color: white;
   border: 1px solid;
@@ -351,7 +379,9 @@ section.cta .overlay {
 }
 
 #signup-form {
-  margin-top: 35px;
+  width: 95%;
+  border-radius: 5px;
+  margin-top: 40px;
   margin-bottom: 10px;
 }
 #login-form {
@@ -359,26 +389,33 @@ section.cta .overlay {
   margin-bottom: 10px;
 }
 #signup-form label, #login-form label{
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
   color:black;
 }
 #signup-submit, #login-submit {
+  margin-bottom: 5px;
   color: black;
   background-color: #fdcc52;
   border-color: #fdcc52;
 }
-.btn, #signup-submit, #login-submit {
+.btn, #signup-submit, #login-submit, #delete-database {
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   text-transform: uppercase;
   letter-spacing: 2px;
   border-radius: 300px;
 }
 label {
+  font-size: 16px;
   font-family: 'Lato', 'Arial', 'sans-serif';
   color: #fdcc52;
 }
 .error {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.8);
   font-family: 'Lato', 'Arial', 'sans-serif';
-  color: #fdcc52;
+  color: rgba(144, 75, 107, 1);
+  padding-left: 10px;
   font-size: 15px;
   border-radius: 50px; 
 }
@@ -407,9 +444,13 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
-
-
-
-
-
-
+.recent-img {
+  min-height: 250px;
+  max-height: 275px;
+}
+.thumbnail {
+  height: 450px;
+}
+.caption {
+  max-height: 50px;
+}
