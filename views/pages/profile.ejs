@@ -19,12 +19,19 @@
               <div class="row">
 
                   <div class = "col-xs-6 col-md-4">
-                      <img id="profilePicture" src="<%= User.picture %>" alt="Profile Picture" class="img-rounded" style="width:200px;height:200px;"> 
-                      <% if(Cur === User.username) {%>
+                      <img id="profilePicture" src="<%= User.picture %>" alt="Profile Picture" class="img-rounded" style="width:200px;"> 
+                      <% if(Cur === User.username && !(isAdmin)) {%>
                           <form action="/editprofile" id="edit-profile">
                               <br>
                               <input type="submit" class="btn btn-primary" value="Edit Profile" />
                           </form>
+                        <% } %>
+
+                        <% if(isAdmin) {%>
+                      
+                          <a href="/admineditprofile?user=<%= User.username %>" style="padding-left:50px;">
+                          <input class="btn btn-primary" type="button" value="Edit <%= User.username %>'s Profile" />
+                          </a>
                         <% } %>
                   </div>
                   <div class = "col-xs-6 col-md-4" id="basic-info">

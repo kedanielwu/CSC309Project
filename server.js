@@ -88,6 +88,7 @@ app.get('/signup', nonUser, function(req, res) {
 });
 
 app.get('/editprofile', user, users.showEdit);
+app.get('/adminEditProfile', admin, users.showAdminEdit);
 
 // Get the index page:
 app.get('/', function(req, res) {
@@ -100,6 +101,7 @@ app.get('/logout', authorize.logout);
 app.get('/users', users.find);
 app.post('/users', users.addUser);
 app.post('/updateUser', user, users.updateUser);
+app.post('/adminUpdateUser', users.adminUpdateUser);
 app.delete('/users', admin, users.removeUser);
 
 app.get('/listings', listings.find);

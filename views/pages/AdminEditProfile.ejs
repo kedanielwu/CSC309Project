@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+
+
+    <header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+        <div class="container"  id="signup-form">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <h1 class="section-heading">Edit <%= User.username %>'s Profile</h1>
+                <form id="updateProfile" action="/adminUpdateUser" method="POST">
+
+                  
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label " >Username</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="username-input" name="username" value="<%= User.username %>">
+                      <p class="error" id="error-username"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="username-input" name="description" value="<%= User.description %>" style="padding-bottom: 200px;">
+                      <p class="error" id="error-username"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-email-input" class="col-xs-2 col-form-label">Email</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="email" placeholder="hellooo@example.com" id="email-input" name="email" value="<%= User.email %>" disabled>
+                      <p class="error" id="error-email"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-tel-input" class="col-xs-2 col-form-label">Phone # (Optional) </label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="tel" id="phone-input" name="phoneNumber" value="<%= User.phoneNumber %>">
+                      <p></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="password" id="password-input" name="password" placeholder="Must be at least 5 characters">
+                      <p class="error" id="error-password"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-password-input" class="col-xs-2 col-form-label">Confirm password</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="password" id="confirm-password-input" name="confirm-password" placeholder="Must be at least 5 characters">
+                      <p class="error" id="error-confirm"></p>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="exampleSelect2">Area (Optional, GTA only)</label>
+                      <select multiple class="form-control" id="area-input" name="area">
+                        <option>Toronto</option>
+                        <option>Mississauga</option>
+                        <option>Brampton</option>
+                        <option>Scarborough</option>
+                      </select>
+                    </div>
+                    <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Profile Picture (Optional)</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="picture-input" name="picture" placeholder="Type a URL" value="<%= User.picture %>">
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-outline btn-xl page-scroll" value="Submit" id="signup-submit">
+                </form>
+              </div>
+            </div>
+        </div>
+    </header>
+
+
+
+                     
+              </div>
+          </div>
+      </section>
+
+ 
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+
+</body>
+
+</html>
