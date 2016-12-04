@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var listingSchema = new Schema(
     {
-        user_id: {
+        username: {
             type: String, required: true//is this a username or just a number id?
         },
         title: {

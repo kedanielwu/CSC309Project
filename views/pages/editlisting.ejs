@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+
+
+    <header>
+        <div id="listing_id" class="hidden"><%= Listing._id %></div>
+        <div class="container"  id="signup-form">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <h1 class="section-heading">Edit Your Profile</h1>
+                <form id="updateProfile" action="/updateListing" method="POST">
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label " >Username</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="title-input" name="title" value="<%= Listing.title %>" disabled>
+                      <p class="error" id="error-title"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Description</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="description-input" name="description" value="<%= Listing.description %>" style="padding-bottom: 200px;">
+                      <p class="error" id="error-description"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Price</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="price-input" name="price" value="<%= Listing.price %>" >
+                      <p class="error" id="error-price"></p>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Listing Picture (Optional)</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="picture-input" name="picture" placeholder="Type a URL" value="<%= Listing.picture %>">
+                    </div>
+                  </div>
+                  <input class="form-control hidden" type="text" name="id" value="<%= Listing._id %>">
+                  <input type="submit" class="btn btn-outline btn-xl page-scroll" value="Submit" id="signup-submit">
+                </form>
+              </div>
+            </div>
+        </div>
+    </header>
+
+
+
+                     
+              </div>
+          </div>
+      </section>
+
+ 
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+
+</body>
+
+</html>

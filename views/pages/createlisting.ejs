@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+    <header>
+        <div class="container"  id="signup-form">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                <h1 class="section-heading">Create a Listing</h1>
+                <form action="/listing" method="POST">
+                  <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Title</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="title-input" name="title">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="example-description-input" class="col-xs-2 col-form-label">Description</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="confirm-description-input" name="description" placeholder="Item description">
+                    </div>
+                  </div>
+                    <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Item Picture (Optional)</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="picture-input" name="picture" placeholder="Type a URL">
+                    </div>
+                  </div>
+                  </div>
+                    <div class="form-group row">
+                    <label for="example-text-input" class="col-xs-2 col-form-label">Price</label>
+                    <div class="col-xs-10">
+                      <input class="form-control" type="text" id="price-input" name="price" placeholder="Price in CAD">
+                    </div>
+                  </div>
+                  <input class="form-control" type="text" id="username" name="username" value='<%= cur %>'>
+                  <input type="submit" class="btn btn-outline btn-xl page-scroll" value="Submit" id="signup-submit">
+                </form>
+              </div>
+            </div>
+        </div>
+    </header>
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+  <script src="../public/js/createlisting.js"></script>
+
+</body>
+
+</html>
