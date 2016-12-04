@@ -13,8 +13,9 @@
     <% for(var i=0; i < results.length; i++) { %>
       <tr class="clickable-row" data-href=/users?id=<%= results[i]._id %> >
         <td>
-          <img src=<%= results[i].picture %> alt="listing-image">
-        </td>
+          <div class="img-result">
+            <img src=<%= results[i].picture %> alt="listing-image">
+          </div>        </td>
         <td><%= results[i].username %></td>
         <td><%= results[i].description %></td>
         <td><%= results[i]._id %></td>
