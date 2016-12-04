@@ -67,6 +67,7 @@ exports.findAPI = function(req, res){
     console.log("GET /api/user API");
     User.find({"username": req.query.username}, function(err, data){
         if (err) throw err;
+        console.log(data);
         res.send(data);
     })
 }

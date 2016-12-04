@@ -7,7 +7,7 @@ exports.addListing = function(req, res) {
 
     newListing.save(function(err, newListing) {
         if (err) console.log(err);
-        res.send('Success');
+        res.redirect('/listings?id='+newListing._id);
     })
 };
 
