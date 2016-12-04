@@ -8,8 +8,7 @@
 
 body {
     margin-top: 100px;
-    /*color: #918f8f;*/
-
+    color: #b3b3b3   ;
 }
 
 
@@ -29,10 +28,6 @@ body {
     background-color: #fff;
 }
 
-.huge {
-    font-size: 50px;
-    line-height: normal;
-}
 
 @media(min-width:768px) {
     #wrapper {
@@ -170,23 +165,23 @@ ul.alert-dropdown {
 
 /* Custom Colored Panels */
 
-.huge {
-    font-size: 40px;
-}
-
 #page-top {
-background: #AB93C9;
+/*background: #AB93C9;*/
+background-color: #05141A;
 }
 #top, #page-wrapper {
-    /*background-color: #05141A;*/
-    background: -webkit-linear-gradient(#AB93C9, #E29AAD, #FFBEA3); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#AB93C9, #E29AAD, #FFBEA3); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#AB93C9, #E29AAD, #FFBEA3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#AB93C9, #E29AAD, #FFBEA3); /* Standard syntax (must be last) */
+    background-color: #05141A;
+    /*background: -webkit-linear-gradient(#AB93C9, #E29AAD, #FFBEA3);
+    background: -o-linear-gradient(#AB93C9, #E29AAD, #FFBEA3);
+    background: -moz-linear-gradient(#AB93C9, #E29AAD, #FFBEA3);
+    background: linear-gradient(#AB93C9, #E29AAD, #FFBEA3);*/
 }
-#page-wrapper {
-    border-style: solid;
-    border-radius: 5px;
-    border-color: rgba(255,255,255,.3);
+#top {
+    border-right-style: solid;
+    /*border-radius: 5px;*/
+    border-color: rgba(255,255,255,.8);
     border-width: 2px;
+}
+h3, h1 {
+    color: #fdcc52;
 }
