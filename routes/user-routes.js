@@ -9,6 +9,20 @@ exports.showEdit = function(req, res){
     });
 }
 
+
+exports.showAdminEdit = function(req, res){
+    console.log(req.query.user);
+    if(req.query.user){
+        User.find({"username": req.query.user}, function(err, User) {
+            res.render('pages/AdminEditProfile', {title: "Edit " + req.query.user + "'s Profile", User:User[0]});
+        });
+    }
+    else{
+        res.sendStatus(404);
+    }
+    
+}
+
 /**
  * Finds users.
  *
@@ -16,7 +30,7 @@ exports.showEdit = function(req, res){
  * @param {object} res response object
  */
 exports.find = function(req, res) {
-    console.log('find User');
+    console.log('find User' + req.session.ifAdmin);
     var listings;
 
     if(req.query.id){
@@ -24,13 +38,16 @@ exports.find = function(req, res) {
         Listing.find({"user_id": req.query.id}, function(err, data){
             if (err) throw err;
                 res.render('pages/profile', {User:User[0], listings:data, title: req.query.id+"'s "+"Profile"});
-        	});
+            });
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
             Listing.find({"username": req.query.username}, function(err, data){
             if (err) throw err;
-                res.render('pages/profile', {User:User[0], listings:data, title: req.query.username+"'s "+"Profile", Cur:req.session.user});
+                res.render('pages/profile', {User:User[0], listings:data,
+                    title: req.query.username+"'s "+"Profile",
+                    Cur:req.session.user,
+                    isAdmin:req.session.ifAdmin});
             });
         });
     } else if(req.query.email){
@@ -90,6 +107,41 @@ exports.updateUser = function(req, res) {
                           { $set:{"area": req.body.area}}, function(err, User){});          
             }
             res.redirect("/users?username=" + req.session.user);
+    }
+    else{
+        console.log("Error: user id given to update");
+    }
+};
+
+exports.adminUpdateUser = function(req, res) {
+    console.log('Update User');
+    console.log(req.body);
+    if(req.body.username){
+            if(req.body.email){
+                 User.update({"username": req.body.username},
+                          { $set:{"email": req.body.email}}, function(err, User){});          
+            }
+            if(req.body.password && req.body.password != ''){
+                 User.update({"username": req.body.username},
+                          { $set:{"password": bcrypt.hashSync(req.body.password, Math.random())}}, function(err, User){});          
+            }
+            if(req.body.picture){
+                 User.update({"username": req.body.username},
+                          { $set:{"picture": req.body.picture}}, function(err, User){});          
+            }
+            if(req.body.description){
+                 User.update({"username": req.body.username},
+                          { $set:{"description": req.body.description}}, function(err, User){});          
+            }
+            if(req.body.userType){
+                 User.update({"username": req.body.username},
+                          { $set:{"userType": req.body.userType}}, function(err, User){});          
+            }
+            if(req.body.area){
+                 User.update({"username":req.body.username},
+                          { $set:{"area": req.body.area}}, function(err, User){});          
+            }
+            res.redirect("/users?username=" + req.body.username);
     }
     else{
         console.log("Error: user id given to update");
