@@ -22,9 +22,10 @@ exports.find = function(req, res) {
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
-            if (err) {return res.send("");}
-            // console.log(User)
-            res.send(User);
+            Listing.find({"user_id": req.query.id}, function(err, data){
+            if (err) throw err;
+                    res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
+            });
         });
     } else if(req.query.email){
         User.find({"email": req.query.email}, function(err, User) {
