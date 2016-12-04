@@ -1,11 +1,5 @@
 var Listing = require('../models/listings');
 
-/**
- * Finds all the users.
- *
- * @param {object} req request object
- * @param {object} res response object
- */
 exports.addListing = function(req, res) {
 	console.log("POST /listing received");
     console.log(req.body);
@@ -13,9 +7,15 @@ exports.addListing = function(req, res) {
 
     newListing.save(function(err, newListing) {
         if (err) console.log(err);
-        res.send('Success');
+        res.redirect('/listings?id='+newListing._id);
     })
 };
+
+exports.showEdit = function(req, res){
+    Listing.find({"_id": req.query._id}, function(err, data) {
+         res.render('pages/editlisting', {title: "Edit Your Listing", Listing:data[0]});
+    });
+}
 
 exports.findRecent = function(req, res) {
     res.send('Success!!!!!!!!');
@@ -27,7 +27,7 @@ exports.find = function(req, res) {
         Listing.find({"_id": req.query.id}, function(err, data){
             if (err) throw err;
             //array of one listing
-            res.render('pages/listing', data[0]);
+            res.render('pages/listing', {title: data[0].title, Cur: req.session.user, Listing: data[0], isAdmin: req.session.ifAdmin});
         })
     }
     else {
@@ -41,24 +41,21 @@ exports.find = function(req, res) {
 
 exports.updateListing = function(req, res){
     console.log("PUT /listing received");
-    if(req.query.id){
-        if(req.query.title){
-            Listing.update({"_id": req.query.id},
-                        { $set:{"title": req.query.title}}, function(err, data){});
+    console.log(req.body);
+    if(req.body.id){
+        if(req.body.title){
+            Listing.update({"_id": req.body.id},
+                        { $set:{"title": req.body.title}}, function(err, data){});
         }
-        if(req.query.description){
-                Listing.update({"_id": req.query.id},
-                        { $set:{"email": req.query.description}}, function(err, data){});          
+        if(req.body.description){
+                Listing.update({"_id": req.body.id},
+                        { $set:{"description": req.body.description}}, function(err, data){});          
         }
-        if(req.query.status){
-                Listing.update({"_id": req.query.id},
-                        { $set:{"email": req.query.status}}, function(err, data){});          
+        if(req.body.picture){
+                Listing.update({"_id": req.body.id},
+                        { $set:{"picture": req.body.picture}}, function(err, data){});          
         }
-        if(req.query.picture){
-                Listing.update({"_id": req.query.id},
-                        { $set:{"picture": req.query.picture}}, function(err, data){});          
-        }
-        res.send("Updated");
+        res.redirect("/listings?id=" + req.body.id);
     } else {
         res.send(400, "Error: wrong request format")
     }

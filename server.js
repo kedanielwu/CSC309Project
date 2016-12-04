@@ -87,8 +87,13 @@ app.get('/signup', nonUser, function(req, res) {
     res.render('pages/signup', {title: "Signup"});
 });
 
+app.get('/createlisting', user, function(req,res){
+	res.render('pages/createlisting', {title: "Create listing", cur: req.session.user});
+})
+
 app.get('/editprofile', user, users.showEdit);
 app.get('/adminEditProfile', admin, users.showAdminEdit);
+app.get('/editlisting', user, listings.showEdit);
 
 // Get the index page:
 app.get('/', function(req, res) {
@@ -104,9 +109,12 @@ app.post('/updateUser', user, users.updateUser);
 app.post('/adminUpdateUser', users.adminUpdateUser);
 app.delete('/users', admin, users.removeUser);
 
+//API for user
+app.get('/api/users', users.findAPI);
+
 app.get('/listings', listings.find);
 app.post('/listings', user, listings.addListing);
-app.put('/listing', user, listings.updateListing);
+app.post('/updateListing', user, listings.updateListing);
 app.delete('/listing', user, listings.removeListing);
 
 app.post('/comments', user, listings.postComment);
