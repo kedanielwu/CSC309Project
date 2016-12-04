@@ -1,4 +1,5 @@
 var User = require('../models/users');
+var bcrypt = require('bcryptjs');
 
 exports.login = function(req, res) {
     console.log('Logging in...');
@@ -10,14 +11,14 @@ exports.login = function(req, res) {
             if (err) {
                 return res.send("");
             } else if (User[0].userType == "admin" &&
-                User[0].password == req.query.password) {
+                bcrypt.compareSync(req.query.password, User[0].password)) {
                 console.log(User);
                 req.session.ifAdmin = true;
                 req.session.user = req.query.username;
                 req.session.admin = true;
                 return res.send("admin login success");
             } else if (User[0].userType == "user" && 
-                User[0].password == req.query.password) {
+                bcrypt.compareSync(req.query.password, User[0].password)) {
                 console.log(User);
                 req.session.ifAdmin = false;
                 req.session.user = req.query.username;

@@ -1,5 +1,6 @@
 var User = require('../models/users');
 var Listing = require('../models/listings');
+var bcrypt = require('bcryptjs');
 
 /**
  * Finds users.
@@ -22,7 +23,7 @@ exports.find = function(req, res) {
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
-            Listing.find({"user_id": req.query.id}, function(err, data){
+            Listing.find({"username": req.query.id}, function(err, data){
             if (err) throw err;
                     res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
             });
@@ -48,8 +49,13 @@ exports.find = function(req, res) {
 //Can also add with query if we would rather do that
 exports.addUser = function(req, res) {
     console.log("adding User");
-    console.log(req.body);
+    //console.log(req.body);
     var newUser = new User(req.body);
+
+    
+
+    newUser.password = bcrypt.hashSync(newUser.password, Math.random());
+    console.log("Password? :::  " + newUser.password);
 
     newUser.save(function(err, newUser) {
         if (err) console.log(err);
