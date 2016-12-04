@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 //TYPES OF USERS
 var user = function(req, res, next) { //any users including admins
-	if (req.session && !req.session.ifAdmin && 
+	if (req.session && 
 		req.session.user && req.session.admin) {
 		return next();
 	} else {
@@ -95,7 +95,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/loginCheck', authorize.login);
-app.get('/logout', user, authorize.logout);
+app.get('/logout', authorize.logout);
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);

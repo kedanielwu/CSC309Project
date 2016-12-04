@@ -3,7 +3,7 @@ var Listing = require('../models/listings');
 var bcrypt = require('bcryptjs');
 
 exports.showEdit = function(req, res){
-    console.log(req);
+    console.log(req.session.user);
     User.find({"username": req.session.user}, function(err, User) {
          res.render('pages/EditProfile', {title: "Edit Your Profile", User:User[0]});
     });
