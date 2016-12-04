@@ -11,7 +11,7 @@
 
   <tbody>
     <% for(var i=0; i < results.length; i++) { %>
-      <tr href=/users?id=<%= results[i]._id %> >
+      <tr class="clickable-row" data-href=/users?id=<%= results[i]._id %> >
         <td>
           <img src=<%= results[i].picture %> alt="listing-image">
         </td>

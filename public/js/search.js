@@ -20,4 +20,9 @@
         //TODO: validate for security? does mongo take care of this?
     });
 
+    // Make results clickable
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+
 })(jQuery); // End of use strict
