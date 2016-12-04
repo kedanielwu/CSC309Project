@@ -1,14 +1,24 @@
 <!-- views/partials/search/user_results.ejs -->
 
 <table>
-  <% for(var i=0; i < results.length; i++) { %>
-    <tr href=/users?id=<%= results[i]._id %> >
-      <td>
-        <img src=<%= results[i].picture %> alt="listing-image">
-      </td>
-      <td><%= results[i].username %></td>
-      <td><%= results[i].description %></td>
-      <td><%= results[i]._id %></td>
-    </tr>
-  <% } %>
+  <thead>
+      <tr>
+          <th class="col-sm-2 text-center">Image</th>
+          <th class="col-sm-1 text-center">Username</th>
+          <th class="col-sm-5 text-center">Description</th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% for(var i=0; i < results.length; i++) { %>
+      <tr href=/users?id=<%= results[i]._id %> >
+        <td>
+          <img src=<%= results[i].picture %> alt="listing-image">
+        </td>
+        <td><%= results[i].username %></td>
+        <td><%= results[i].description %></td>
+        <td><%= results[i]._id %></td>
+      </tr>
+    <% } %>
+  </tbody>
 </table>
