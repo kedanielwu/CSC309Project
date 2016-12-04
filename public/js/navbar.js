@@ -18,6 +18,8 @@
         }
         else if (data) {
             //IN NAVBAR
+            //add create posting link
+            $("#navbar").append("<li><a class='page-scroll' href='/listings?create'>POST</a></li>");
             //add profile link
             $("#navbar").append("<li><a class='page-scroll' href='/users?username="+data+"'>PROFILE</a></li>");
             //add logout link
