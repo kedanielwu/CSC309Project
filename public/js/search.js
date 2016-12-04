@@ -7,14 +7,8 @@
         
         let searchText = $("#search_text_input").val().trim();
         let searchKey = $("#search_key_input").val().toLowerCase();
-        // $(".error").text("");
-        // $("#error-confirm").text("");
-
-            console.log("Search requested");
-
 
         $.get('/search', searchKey+'='+searchText, function(data, status){
-            console.log("Search requested");
             window.location.replace("/search?" + searchKey+'='+searchText);
 
             // if (data == "login success") {

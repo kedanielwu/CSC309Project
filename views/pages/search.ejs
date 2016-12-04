@@ -7,7 +7,7 @@
 
 <body id="page-top">
   <% include ../partials/nav %>
-    <section id="download" class="download bg-primary text-center">
+<!--     <section id="download" class="download bg-primary text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
@@ -18,14 +18,15 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
-    <section id="search_results" class="bg-primary text-center">
-      <h2 class="section-heading">Showing <%= results.length %> results for '<%= searchText %>'</h2>
+    <section id="search_results" class="download bg-primary text-center">
+      <div class="container">
+        <h2 class="section-heading">Showing <%= results.length %> results for '<%= searchText %>'</h2>
 
-      <form id="sort_results_form">
-        <div class="form-group row">  
-          <label>Sort by: </label>
+        <form id="sort_results_form">
+          <div class="form-group">  
+            <label>Sort by: </label>
             <select class="form-control input-small" id="sort_by_input">
               <option>Date Created</option>
               <option>Relevance</option>
@@ -33,21 +34,22 @@
               <option>Price</option>
               <% } %>
             </select>
-        </div>
-      </form>
+          </div>
+        </form>
 
-      <!-- Render either user or listing results depending on key -->
-      <% if (key == 'users') { %>
-        <% include ../partials/search/user_results %>
-      <% } %>
-      <% if (key == 'listings') { %>
-        <% include ../partials/search/listing_results %>
-      <% } %>
+        <!-- Render either user or listing results depending on key -->
+        
+        <% if (key == 'users') { %>
+          <% include ../partials/search/user_results %>
+        <% } %>
+        <% if (key == 'listings') { %>
+          <% include ../partials/search/listing_results %>
+        <% } %>
+      </div>
     </section>
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
-  <script src="../public/js/navbar.js"></script>
 
 </body>
 

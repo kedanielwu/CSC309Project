@@ -41,7 +41,7 @@ function searchListings(searchText, callback){
       }
     })
     .exec(function(err, results){
-      if (err) throw err;
+      if (err || results == undefined) throw err;
 
       console.log("Searched for: ", searchText);
       //console.log(results);
@@ -65,7 +65,7 @@ function searchUsers(searchText, callback){
     }
   })
   .exec(function(err, results){
-    if (err) throw err;
+    if (err || results == undefined) throw err;
 
     console.log("Searched for: ", searchText);
     //console.log(results);
