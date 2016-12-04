@@ -8,8 +8,8 @@ exports.login = function(req, res) {
         res.send('login failed');
     } else {
         User.find({"username": req.query.username}, function(err, User) {
-            if (err) {
-                return res.send("");
+            if (err || User[0] == null) {
+                res.send('');
             } else if (User[0].userType == "admin" &&
                 bcrypt.compareSync(req.query.password, User[0].password)) {
                 console.log(User);

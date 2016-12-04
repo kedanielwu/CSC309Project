@@ -88,6 +88,8 @@ app.get('/signup', nonUser, function(req, res) {
     res.render('pages/signup', {title: "Signup"});
 });
 
+app.get('/editprofile', user, users.showEdit);
+
 // Get the index page:
 app.get('/', function(req, res) {
     res.render('pages/index', {title: "Homepage"});
@@ -98,7 +100,7 @@ app.get('/logout', authorize.logout);
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
-app.put('/users', user, users.updateUser);
+app.post('/updateUser', user, users.updateUser);
 app.delete('/users', admin, users.removeUser);
 
 //app.get('/listings', listings.find);

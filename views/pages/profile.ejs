@@ -7,16 +7,32 @@
 
 <body id="page-top">
   <% include ../partials/nav %>
-    <header>  
+    <header> 
+    <br>
+    <br> 
+    <br> 
+    <br> 
+    <br> 
+
       <section id="UserInfo">
           <div class="container">
               <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12"><h2><%= User.username %></h2></div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <h2><%= User.username %></h2> 
+                          
+                  </div>
     
                       
             
                   <div class = "col-xs-6 col-md-4">
-                      <img id="profilePicture" src="<%= User.picture %>" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;">             
+                      <img id="profilePicture" src="<%= User.picture %>" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;"> 
+                      <% if(Cur === User.username) {%>
+                         
+                          <form action="/editprofile" >
+                              <input type="submit" class="btn btn-primary" value="Edit Profile" />
+                          </form>
+                                                   
+                        <% } %>            
                   </div>
                   <div class = "col-xs-6 col-md-4">
                       <h1>Discription:</h1>
