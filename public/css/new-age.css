@@ -476,7 +476,7 @@ body {
 }
 .clickable-row:hover {
   border: 1.5px solid white;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
 }
 .search-result {
