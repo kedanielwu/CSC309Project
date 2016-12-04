@@ -4,7 +4,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-
 //ROUTES
 var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
@@ -39,7 +38,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 //TYPES OF USERS
 var user = function(req, res, next) { //any users including admins
-	if (req.session && !req.session.ifAdmin && 
+	if (req.session && 
 		req.session.user && req.session.admin) {
 		return next();
 	} else {
@@ -103,7 +102,6 @@ app.post('/users', users.addUser);
 app.post('/updateUser', user, users.updateUser);
 app.delete('/users', admin, users.removeUser);
 
-//app.get('/listings', listings.find);
 app.get('/listings', listings.find);
 app.post('/listings', user, listings.addListing);
 app.put('/listing', user, listings.updateListing);
@@ -117,4 +115,3 @@ app.get('/search', search.search);
 
 app.listen(3000);
 console.log('Listening on port 3000');
-

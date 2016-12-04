@@ -26,9 +26,10 @@ var listingSchema = new Schema(
         },
         price: {
             type: String, required: true
+        },
+        date: {
+            type: Date, default: new Date().getDate()
         }
-        //TODO: Need a date-posted field
-        //TODO: How does the _id work? Is it automatic or do we enable it somewhere?
     },
     {
         collection: 'listings'

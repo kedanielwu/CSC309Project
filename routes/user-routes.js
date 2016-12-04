@@ -2,13 +2,12 @@ var User = require('../models/users');
 var Listing = require('../models/listings');
 var bcrypt = require('bcryptjs');
 
-
 exports.showEdit = function(req, res){
+    console.log(req.session.user);
     User.find({"username": req.session.user}, function(err, User) {
          res.render('pages/EditProfile', {title: "Edit Your Profile", User:User[0]});
     });
 }
-
 
 /**
  * Finds users.
@@ -22,33 +21,28 @@ exports.find = function(req, res) {
 
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
-		Listing.find({"user_id": req.query.id}, function(err, data){
+        Listing.find({"user_id": req.query.id}, function(err, data){
             if (err) throw err;
-            		res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.id+"'s "+"Profile"});
         	});
-	
-  
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
             Listing.find({"username": req.query.username}, function(err, data){
             if (err) throw err;
-                    res.render('pages/profile', {User:User[0], listings:data, title: "profile", Cur:req.session.user});
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.username+"'s "+"Profile", Cur:req.session.user});
             });
         });
     } else if(req.query.email){
         User.find({"email": req.query.email}, function(err, User) {
             if (err) {return res.send("");}
-            // console.log(User)
             res.send(User);
-            // res.render('profile', User);
         });
     }
     else{
         User.find({}, function(err, allUsers) {
-        if (err) throw err;
-        // console.log(allUsers)
-        res.send(allUsers);
+            if (err) throw err;
+            res.send(allUsers);
         });
     }
 };
@@ -57,11 +51,7 @@ exports.find = function(req, res) {
 //Can also add with query if we would rather do that
 exports.addUser = function(req, res) {
     console.log("adding User");
-    //console.log(req.body);
     var newUser = new User(req.body);
-
-    
-
     newUser.password = bcrypt.hashSync(newUser.password, Math.random());
     //console.log("Password? :::  " + newUser.password);
 
@@ -71,15 +61,10 @@ exports.addUser = function(req, res) {
     })
 };
 
-
 exports.updateUser = function(req, res) {
     console.log('Update User');
     console.log(req.body);
     if(req.session.user){
-            // if(req.query.username){
-            //     User.update({"_id": req.query.id},
-            //               { $set:{"username": req.query.username}}, function(err, User){});
-            // }
             if(req.body.email){
                  User.update({"username": req.session.user},
                           { $set:{"email": req.body.email}}, function(err, User){});          
@@ -114,19 +99,24 @@ exports.updateUser = function(req, res) {
 
 exports.removeUser = function(req, res) {
     console.log('Remove User');
-    console.log(JSON.stringify(req.query));
 
-    if(req.query.id){
-        if (req.query.id=="all") {
-            User.remove({});
-            return res.render('/admin');
-        } else {
-            User.remove({"_id": req.query.id}, function(err, User) {
-                if (err) throw err;
-                console.log(User)
-                res.send(User);
-            });
-        }
+    if(req.query.all){ 
+        User.remove({"userType": "user"}, function(err, User) { //shouldn't be removing admins
+            if (err) throw err;
+            console.log("All users deleted");
+        });
+
+        Listing.remove({}, function(err, Listing) {
+            if (err) throw err;
+            console.log("All listings deleted");
+            res.send("Database wiped.");
+        });
+    } else if (req.query.id){
+        User.remove({"_id": req.query.id}, function(err, User) {
+            if (err) throw err;
+            console.log(User)
+            res.send(User);
+        });        
     } else{
         console.log("Error: need user id")
     }

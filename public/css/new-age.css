@@ -101,7 +101,7 @@ p {
 }
 .navbar-default .nav > li > a:hover,
 .navbar-default .nav > li > a:focus:hover {
-  color: #fdcc52;
+  color: pink;
 }
 .navbar-default .nav > li.active > a,
 .navbar-default .nav > li.active > a:focus {
@@ -161,8 +161,6 @@ header {
   background: url("http://i0.wp.com/38.media.tumblr.com/0548a184b645a3a79d150208b9020eb9/tumblr_nr2569nqX01qze3hdo1_r2_500.gif?resize=500%2C708"),
    -webkit-linear-gradient(to left, #7b4397, #dc2430);
   background: url("http://i0.wp.com/38.media.tumblr.com/0548a184b645a3a79d150208b9020eb9/tumblr_nr2569nqX01qze3hdo1_r2_500.gif?resize=500%2C708");
-    /*http://66.media.tumblr.com/e405e647203d9a98a59aea9935515f65/tumblr_inline_mwbs0niDWP1qkc0d3.gif")*/
-  /*, linear-gradient(to left, #7b4397, #dc2430)*/
   ;
   color: white;
 }
@@ -178,11 +176,8 @@ header .header-content .header-content-inner {
   margin: 0 auto;
 }
 header .header-content .header-content-inner h1 {
-  
   background-color: rgba(144, 75, 107,.5);
-  /*border-color: rgba(255,255,255,.5);*/
   border-radius: 3px;
-  /*border-style: solid;*/
   margin-top: 0;
   margin-bottom: 30px;
   font-size: 30px;
@@ -231,8 +226,6 @@ header .device-container .screen img {
   header .header-content .header-content-inner h1 {
     padding: 20px;
     color: white;
-    /*#223043;*/
-    /*border-style: solid;*/
     font-size: 70px;
   }
 }
@@ -364,7 +357,7 @@ section.cta .overlay {
   /*background-color: rgba(255, 255, 255,.2);*/
   font-weight: bold;
 }
-.btn-outline, #signup-submit, #login-submit, #delete-database{
+.btn-outline, #signup-submit, #login-submit{
   color: white;
   border-color: white;
   border: 1px solid;
@@ -453,4 +446,30 @@ body {
 }
 .caption {
   max-height: 50px;
+}
+#UserInfo {
+  color: black;
+  background-color: rgba(255,255,255,.4);
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 90%;
+  margin-left: 5%;
+  border-style: solid;
+  border-width: 1.5px;
+  border-color: white;
+  border-radius: 3px;
+}
+#UserInfo h2{
+  font-size: 100px;
+}
+#profile {
+  min-height: 620px;
+}
+#profile-listings {
+  padding-top: 35px;
+  background: #0A1A1D;
+  color: #fdcc52;
+}
+#profilePicture, #edit-profile{
+  margin-left: 15%;
 }

@@ -1,47 +1,48 @@
 (function($) {
     "use strict"; // Start of use strict
 
-    $.get('/currentUser', "", function(data, status) { //check if current user has signed up
-        if (data) {
-            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
-            $("#navbar").append("<li><a class='page-scroll' href='/profile?username='"+data+">PROFILE</a></li>");
-            $("#navbar").append("<li><a class='page-scroll' href='/logout'>LOGOUT</a></li>");
+    $.get('/users', "", function(data, status) {
+        $("#total-users").append(" "+data.length);
+    });
+    $.get('/listings', "", function(data, status) {
+        $("#total-listings").append(" "+data.length);
+    });
+
+    $('#pop-database').on('click', function(event) {
+        let arr;
+        try {
+            arr = JSON.parse($('#pop-input').val());
+        } catch(err) {
+            $("#pop-confirm").text(err);
+            return false;
         }
+
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+           $.ajax({
+                type: 'POST',
+                url: '/users',
+                data: arr[i],
+                success: function() {
+                    $("#pop-confirm").text("Database successfully populated.");
+                }
+            });            
+        }
+
     });
 
     $('#delete-database').on('click', function(event) {
         event.preventDefault();
-        // $.delete("/users","?id=all", function(data, status) {
-        //     console.log(data);
-        // });
-       // TODO
-    });
-
-    // jQuery for page scrolling feature - requires jQuery Easing plugin
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: ($($anchor.attr('href')).offset().top - 50)
-        }, 1250, 'easeInOutExpo');
-        event.preventDefault();
-    });
-
-    // Highlight the top nav as scrolling occurs
-    $('body').scrollspy({
-        target: '.navbar-fixed-top',
-        offset: 100
-    });
-
-    // Closes the Responsive Menu on Menu Item Click
-    $('.navbar-collapse ul li a').click(function() {
-        $('.navbar-toggle:visible').click();
-    });
-
-    // Offset for Main Navigation
-    $('#mainNav').affix({
-        offset: {
-            top: 50
+        $("#delete-confirm").text("");
+        if (confirm("Are you sure you want to delete all listings and users?")) {
+           $.ajax({
+                type: 'DELETE',
+                url: '/users?all=all',
+                success: function() {
+                    $("#delete-confirm").text("Database successfully deleted");
+                }
+            });
         }
-    })
+    });
 
 })(jQuery); // End of use strict
