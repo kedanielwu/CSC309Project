@@ -8,13 +8,20 @@
         <% include ../partials/nav %>
     <header>
         <div class="container">
-        <div id="listing_id" class='hidden'><%= _id %></div>
+        <div id="listing_id" class='hidden'><%= Listing._id %></div>
             <div class="row">
                 <div class="col-sm-5">
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h2><%= title %></h2>
-                            <img class="img-rounded" src="<%= picture %>" alt="" style="width:180px;height:180px;">
+                            <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
+                            <% if(Cur === Listing.username && !(isAdmin)) {%>
+                            <form action="/editlisting" id="edit-listing">
+                              <br>
+                              <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
+                              <input type="submit" class="btn btn-primary" value="Edit" />
+                            </form>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -22,16 +29,16 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h2>Description</h2>
-                            <p><%= description %></p>
+                            <p><%= Listing.description %></p>
                             <h2>price</h2>
-                            <p><%= price %></p>
+                            <p><%= Listing.price %></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <div id="user_id" class='hidden'><%= user_id %></div>
+                            <div id="user_id" class='hidden'><%= Listing.username %></div>
                             <div class="col-xs-12 col-sm-12 col-md-12"><h2 id="user_name"></h2></div>
                             <div class = "col-xs-6 col-md-4">
                                 <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;">             

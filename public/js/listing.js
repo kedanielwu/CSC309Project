@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var user_id = $("#user_id").text();
-    $.get("/users", {id: user_id},
+    $.get("/api/users", {username: user_id},
         function (data) {
             var user = data[0];
             $("#user_description").text(user.description);

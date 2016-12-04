@@ -15,7 +15,7 @@
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <h1 class="section-heading">Edit Your Profile</h1>
-                <form id="updateProfile" action="/listing" method="PUT">
+                <form id="updateProfile" action="/updateListing" method="POST">
                   <div class="form-group row">
                     <label for="example-text-input" class="col-xs-2 col-form-label " >Username</label>
                     <div class="col-xs-10">
@@ -43,6 +43,7 @@
                       <input class="form-control" type="text" id="picture-input" name="picture" placeholder="Type a URL" value="<%= Listing.picture %>">
                     </div>
                   </div>
+                  <input class="form-control hidden" type="text" name="id" value="<%= Listing._id %>">
                   <input type="submit" class="btn btn-outline btn-xl page-scroll" value="Submit" id="signup-submit">
                 </form>
               </div>
