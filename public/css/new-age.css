@@ -364,7 +364,7 @@ section.cta .overlay {
   /*background-color: rgba(255, 255, 255,.2);*/
   font-weight: bold;
 }
-.btn-outline, #signup-submit, #login-submit, #delete-database{
+.btn-outline, #signup-submit, #login-submit{
   color: white;
   border-color: white;
   border: 1px solid;

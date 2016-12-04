@@ -4,7 +4,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-
 //ROUTES
 var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
@@ -103,7 +102,6 @@ app.post('/users', users.addUser);
 app.post('/updateUser', user, users.updateUser);
 app.delete('/users', admin, users.removeUser);
 
-//app.get('/listings', listings.find);
 app.get('/listings', listings.find);
 app.post('/listings', user, listings.addListing);
 app.put('/listing', user, listings.updateListing);

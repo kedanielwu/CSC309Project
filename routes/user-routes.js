@@ -3,6 +3,7 @@ var Listing = require('../models/listings');
 var bcrypt = require('bcryptjs');
 
 exports.showEdit = function(req, res){
+    console.log(req);
     User.find({"username": req.session.user}, function(err, User) {
          res.render('pages/EditProfile', {title: "Edit Your Profile", User:User[0]});
     });
@@ -22,14 +23,14 @@ exports.find = function(req, res) {
         User.find({"_id": req.query.id}, function(err, User) {
         Listing.find({"user_id": req.query.id}, function(err, data){
             if (err) throw err;
-                    res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.id+"'s "+"Profile"});
         	});
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
             Listing.find({"username": req.query.username}, function(err, data){
             if (err) throw err;
-                    res.render('pages/profile', {User:User[0], listings:data, title: "profile", Cur:req.session.user});
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.username+"'s "+"Profile", Cur:req.session.user});
             });
         });
     } else if(req.query.email){
@@ -40,8 +41,8 @@ exports.find = function(req, res) {
     }
     else{
         User.find({}, function(err, allUsers) {
-        if (err) throw err;
-        res.send(allUsers);
+            if (err) throw err;
+            res.send(allUsers);
         });
     }
 };
@@ -95,22 +96,30 @@ exports.updateUser = function(req, res) {
     }
 };
 
+
 exports.removeUser = function(req, res) {
     console.log('Remove User');
-    console.log(JSON.stringify(req.query));
 
-    if(req.query.id){
-        if (req.query.id=="all") {
-            User.remove({});
-            return res.render('/admin');
-        } else {
-            User.remove({"_id": req.query.id}, function(err, User) {
-                if (err) throw err;
-                console.log(User)
-                res.send(User);
-            });
-        }
+    if(req.query.all){ 
+        User.remove({"userType": "user"}, function(err, User) { //shouldn't be removing admins
+            if (err) throw err;
+            console.log("All users deleted");
+        });
+
+        Listing.remove({}, function(err, Listing) {
+            if (err) throw err;
+            console.log("All listings deleted");
+            res.send("Database wiped.");
+        });
+    } else if (req.query.id){
+        User.remove({"_id": req.query.id}, function(err, User) {
+            if (err) throw err;
+            console.log(User)
+            res.send(User);
+        });        
     } else{
         console.log("Error: need user id")
     }
 };
+
+

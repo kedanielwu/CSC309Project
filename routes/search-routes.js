@@ -33,33 +33,6 @@ exports.search = function(req, res){
 function searchListings(searchText, callback){
   results = [];
 
-  // Listing.find(
-  //   {
-  //     $text: {
-  //       $search: searchText,
-  //       $caseSensitive: false
-  //     }
-  //   },
-  //   {
-  //     // Project a field to get text score value
-  //     score: {
-  //       $meta: "textScore"
-  //     }
-  //   })
-  //   .sort(
-  //   {
-  //     // Sort by score
-  //     score: {
-  //       $meta: "textScore"
-  //     }
-  //   })
-  //   .exec(function(err, results){
-  //     if (err) throw err;
-
-  //     console.log("Searched for: ", searchText);
-  //     console.log(results);
-  //   })
-
   Listing.find(
     {
       $text: {
