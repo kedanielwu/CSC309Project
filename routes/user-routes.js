@@ -1,5 +1,6 @@
 var User = require('../models/users');
 var Listing = require('../models/listings');
+var bcrypt = require('bcryptjs');
 
 /**
  * Finds users.
@@ -9,24 +10,30 @@ var Listing = require('../models/listings');
  */
 exports.find = function(req, res) {
     console.log('find User');
+    var listings;
 
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
-            if (err) {return res.send("");}
-            res.render('startbootstrap-new-age-gh-pages/profile', User[0]);
+        Listing.find({"user_id": req.query.id}, function(err, data){
+            if (err) throw err;
+                    res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
+            });
+    
+            // res.render('views/profile', {User:User[0],listings:listings});
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
-            if (err) {return res.send("");}
-            // console.log(User)
-            res.send(User);
+            Listing.find({"username": req.query.id}, function(err, data){
+            if (err) throw err;
+                    res.render('pages/profile', {User:User[0], listings:data, title: "profile"});
+            });
         });
     } else if(req.query.email){
         User.find({"email": req.query.email}, function(err, User) {
             if (err) {return res.send("");}
             // console.log(User)
             res.send(User);
-            res.render('profile', User);
+            // res.render('profile', User);
         });
     }
     else{
@@ -42,8 +49,13 @@ exports.find = function(req, res) {
 //Can also add with query if we would rather do that
 exports.addUser = function(req, res) {
     console.log("adding User");
-    console.log(req.body);
+    //console.log(req.body);
     var newUser = new User(req.body);
+
+    
+
+    newUser.password = bcrypt.hashSync(newUser.password, Math.random());
+    console.log("Password? :::  " + newUser.password);
 
     newUser.save(function(err, newUser) {
         if (err) console.log(err);
@@ -90,19 +102,20 @@ exports.updateUser = function(req, res) {
 
 exports.removeUser = function(req, res) {
     console.log('Remove User');
+    console.log(JSON.stringify(req.query));
 
     if(req.query.id){
-        User.remove({"_id": req.query.id}, function(err, User) {
-            if (err) throw err;
-            console.log(User)
-            res.send(User);
-        });
-    }
-    else{
-      
+        if (req.query.id=="all") {
+            User.remove({});
+            return res.render('/admin');
+        } else {
+            User.remove({"_id": req.query.id}, function(err, User) {
+                if (err) throw err;
+                console.log(User)
+                res.send(User);
+            });
+        }
+    } else{
         console.log("Error: need user id")
-
     }
 };
-
-

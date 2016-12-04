@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+
+  <main>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="header-content">
+                    <div class="header-content-inner">
+                        <h1 id="welcome">Make it simple. <br> Buy 'n sell with LOGO.
+                        </h1>
+                        <a href="/signup" class="btn btn-outline btn-xl page-scroll" id="signup-button">Click here to <strong>sign up</strong>!</a>
+                        <br>
+                        <br>
+                        <a href="/login" class="btn btn-outline btn-xl page-scroll" id="login-button">Already a member? Click here to <strong>login</strong>!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <!-- <div class="col-md-8 col-md-offset-2"> -->
+                    <h1 class="section-heading">Recent Listings</h1>
+                    <p>See what people in your area are selling!</p>
+                    <div class="row" id="recent">
+
+                    </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+  <script src="../public/js/index.js"></script>
+
+</body>
+
+</html>

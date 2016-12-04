@@ -1,4 +1,5 @@
 var User = require('../models/users');
+var bcrypt = require('bcryptjs');
 
 exports.login = function(req, res) {
     console.log('Logging in...');
@@ -7,13 +8,24 @@ exports.login = function(req, res) {
         res.send('login failed');
     } else {
         User.find({"username": req.query.username}, function(err, User) {
-            if (err) {return res.send("");}
-            else if (User[0].password == req.query.password) {
+            if (err || User[0] == undefined) {
+                return res.send("");
+            } else if (User[0].userType == "admin" &&
+                bcrypt.compareSync(req.query.password, User[0].password)) {
+                console.log(User);
+                req.session.ifAdmin = true;
                 req.session.user = req.query.username;
                 req.session.admin = true;
-                res.send("login success");
+                return res.send("admin login success");
+            } else if (User[0].userType == "user" && 
+                bcrypt.compareSync(req.query.password, User[0].password)) {
+                console.log(User);
+                req.session.ifAdmin = false;
+                req.session.user = req.query.username;
+                req.session.admin = true;
+                return res.send("user login success");
             } else {
-                res.send('login failed');
+                return res.send("");
             }
         });
     }
@@ -22,5 +34,5 @@ exports.login = function(req, res) {
 exports.logout = function (req, res) {
     console.log("Logging out...");
     req.session.destroy();
-    res.send("logout success!");  
+    res.render('pages/index', {title: "Homepage"});
 };

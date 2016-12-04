@@ -28,7 +28,8 @@ var userSchema = new Schema(
         },
         userType: {
             type: String, required: true
-        },
+        }
+        //TODO: Need a date-registered field
     },
     {
         collection: 'users'

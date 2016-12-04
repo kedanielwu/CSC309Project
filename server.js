@@ -4,6 +4,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+
 //ROUTES
 var users = require('./routes/user-routes');
 var listings = require('./routes/listing-routes');
@@ -22,14 +23,11 @@ app.use(express.static(__dirname + '/'));
 app.use(express.static(__dirname + '/views'));
 app.use(session({
 	secret: "notsosecret",
-	userType: "nonUser", 
+	ifAdmin: false, //true is user is an admin
 	resave: true,
 	saveUnintialized: true
 }));
 
-app.set('views', __dirname);
-app.set('view engine', 'html');
-app.engine('.html', require('ejs').__express);
 app.set('view engine', 'ejs');
 
 // The request body is received on GET or POST.
@@ -41,7 +39,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 //TYPES OF USERS
 var user = function(req, res, next) { //any users including admins
-	if (req.session && req.session.user && req.session.admin) {
+	if (req.session && !req.session.ifAdmin && 
+		req.session.user && req.session.admin) {
 		return next();
 	} else {
 		return res.sendStatus(401);
@@ -57,34 +56,41 @@ var nonUser = function(req, res, next) { //users without an account
 };
 
 var admin = function(req, res, next) { //only for admins
-	if (req.session && req.session.user == "admin" && req.session.admin) { //TODO
+	if (req.session && req.session.ifAdmin && 
+		req.session.user && req.session.admin) {
 		return next();
 	} else {
 		return res.sendStatus(401);
 	}
 };
 
-//Call to check current user
+// //Call to check current user
 app.get('/currentUser', function(req, res) {
+	console.log(req.session.user)
 	res.send(req.session.user);
 });
 
-//PAGE RESTRICTIONS
+app.get('/currentUserType', function(req, res) {
+	console.log(req.session.ifAdmin)
+	res.send(req.session.ifAdmin);
+});
+
+// //PAGE RESTRICTIONS
 app.get('/login', nonUser, function(req, res){ //login and signup links will be hidden, might not be necessary
-	res.render(__dirname + '/views/login.html');
+	res.render('pages/login', {title: "Login"});
 });
 
 app.get('/admin', admin, function(req, res) {
-	res.render(__dirname + '/views/admin.html'); //admin dashboard is only for admins
+	res.render('pages/admin', {title: "Admin Dashboard"}); //admin dashboard is only for admins
 });
 
 app.get('/signup', nonUser, function(req, res) {
-    res.render(__dirname + '/views/signup.html');
+    res.render('pages/signup', {title: "Signup"});
 });
 
 // Get the index page:
 app.get('/', function(req, res) {
-    res.render(__dirname + '/views/index.html');
+    res.render('pages/index', {title: "Homepage"});
 });
 
 app.get('/loginCheck', authorize.login);
@@ -92,15 +98,16 @@ app.get('/logout', authorize.logout);
 
 app.get('/users', users.find);
 app.post('/users', users.addUser);
-app.put('/users', users.updateUser);
-app.delete('/users', users.removeUser);
+app.put('/users', user, users.updateUser);
+app.delete('/users', admin, users.removeUser);
 
+//app.get('/listings', listings.find);
 app.get('/listings', listings.find);
-app.post('/listings', listings.addListing);
-app.put('/listing', listings.updateListing);
-app.delete('/listing', listings.removeListing);
+app.post('/listings', user, listings.addListing);
+app.put('/listing', user, listings.updateListing);
+app.delete('/listing', user, listings.removeListing);
 
-app.post('/comments', listings.postComment);
+app.post('/comments', user, listings.postComment);
 
 /* Search */
 // Takes params 'user' or 'listing' to search for.
@@ -108,4 +115,3 @@ app.get('/search', search.search);
 
 app.listen(3000);
 console.log('Listening on port 3000');
-
