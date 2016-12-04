@@ -1,93 +1,79 @@
 [
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
-		"title": "Harry Potter Series1!!!",
-		"picture": "http://vignette4.wikia.nocookie.net/harrypotter/images/4/4e/Harry_potter..jpg/revision/latest?cb=20160103201623",
-		"description": "All 7 HP books wow!!!",
-		"price": "$10"
-	},
-	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
-		"title": "Artsy modern cuckoo clock1",
-		"picture": "http://www.momentoitalia.com/tutti%20file/immagini/accessori/modern-cuckoo-clock-design-italian/modern-cuckoo-clock-design-G%20(26).jpg",
-		"description": "Designer cuckoo clock, very cool!!!!! (and expensive please take it..) Retail price was $350",
-		"price": "$200"
-	},
-	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "anne",
 		"title": "Clock fan1",
 		"picture": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/05/27/12/led_desktop_fan4b.jpg",
 		"description": "Used desk fan! Displays the time. Condition 7/10",
 		"price": "$15"
 	},
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "anne",
 		"title": "GINORMOUS TEDDY BEAR WOWZA1",
 		"picture": "https://s-media-cache-ak0.pinimg.com/736x/67/0d/a6/670da6024b700b3199b1b7fb2163ad5f.jpg",
 		"description": "2 metres high!! Very big and soft, almost like brand new",
 		"price": "$150"
 	},
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "anne",
 		"title": "Sneakers1",
 		"picture": "https://static.pexels.com/photos/19090/pexels-photo.jpg",
 		"description": "Used 8/10",
 		"price": "$100"
 	},
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "anne",
 		"title": "Pillow set1",
 		"picture": "http://www.thrivehealth.ca/blog/wp-content/uploads/2013/04/pillows.jpg",
 		"description": "Brand new pillows!!",
 		"price": "$20"
 	},
   {
-    "user_id": "584203c95b58fc289fbe77a7",
+    "username": "anne",
     "title": "computer",
     "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
     "description": "computer!!!",
-    "price": "$500"
+    "price": "$600"
   },
   {
-    "user_id": "584203c95b58fc289fbe77a8",
+    "username": "584203c95b58fc289fbe77a8",
     "title": "linux computer2",
     "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
     "description": "bad computer!!!",
-    "price": "$900"
+    "price": "$600"
   },
   {
-    "user_id": "584203c95b58fc289fbe77a9",
+    "username": "584203c95b58fc289fbe77a9",
     "title": "another computer windows",
     "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
     "description": "good computer",
-    "price": "$300"
+    "price": "$600"
   },
   {
-    "user_id": "584203c95b58fc289fbe77b0",
+    "username": "584203c95b58fc289fbe77b0",
     "title": "computer 4 macbook",
     "picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
     "description": "greatcomputer",
-    "price": "$800"
+    "price": "$600"
   },
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "58431d1c633bf1a5d5c9adf8",
 		"title": "Burger Earmuffs1",
 		"picture": "http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=122060416",
 		"description": "Soft and fluffy! Unfortunately, they are not edible.",
 		"price": "$20"
 	},
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "58431d1c633bf1a5d5c9adf8",
 		"title": "Desktop setup1",
 		"picture": "http://www.odx13.com/wp-content/uploads/2016/11/comp2.jpg",
 		"description": "Condition 8/10",
 		"price": "$600"
 	},
 	{
-		"user_id": "58431d1c633bf1a5d5c9adf8",
+		"username": "58431d1c633bf1a5d5c9adf8",
 		"title": "Clarinet (NEW)1",
 		"picture": "https://ae01.alicdn.com/kf/HTB1p4q_LXXXXXXaXFXXq6xXFXXX8/Reform-Boehm-font-b-Clarinet-b-font-Set-in-Bb-A-from-1970ies-font-b-F.jpg",
 		"description": "Brand new clarinet!! As seen on Spongebob. Condition 10/10",
 		"price": "$375"
-	}
+	},
 ]

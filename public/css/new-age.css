@@ -442,7 +442,7 @@ body {
   max-height: 275px;
 }
 .thumbnail {
-  height: 450px;
+  height: 500px;
 }
 .caption {
   max-height: 50px;
@@ -471,16 +471,13 @@ body {
   background: #0A1A1D;
   color: #fdcc52;
 }
-#edit-form {
-
+#search-results {
+  height: auto;
 }
 .clickable-row:hover {
   border: 1.5px solid white;
   border-radius: 10px;
   cursor: pointer;
-}
-.search-result {
-
 }
 .img-result {
   width: 100%;
@@ -489,4 +486,10 @@ body {
 .img-result img{
   max-width: 100%;
   max-height: 100%;
+}
+.description {
+  height:95px;
+  width:100%;
+  font:20px Georgia, Garamond, Serif;
+  overflow:auto;
 }

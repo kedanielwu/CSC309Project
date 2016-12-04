@@ -29,8 +29,8 @@ var userSchema = new Schema(
         userType: {
             type: String, required: true
         },
-        registerDate: {
-            type: Date, default: new Date().getDate()
+        date: {
+            type: Date, default: Date.now
         }
     },
     {

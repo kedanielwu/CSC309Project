@@ -25,7 +25,7 @@
         if (data) {
             //IN NAVBAR
             //add admin link
-            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
+            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>"); 
             $("#signup-button").hide();
             $("#login-button").hide();
         }
@@ -37,6 +37,8 @@
         }
         else if (data) {
             //IN NAVBAR
+            //add create posting link
+            $("#navbar").append("<li><a class='page-scroll' href='/createlisting'>POST</a></li>");
             //add profile link
             $("#navbar").append("<li><a class='page-scroll' href='/users?username="+data+"'>PROFILE</a></li>");
             //add logout link
