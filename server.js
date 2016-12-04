@@ -87,6 +87,10 @@ app.get('/signup', nonUser, function(req, res) {
     res.render('pages/signup', {title: "Signup"});
 });
 
+app.get('/createlisting', user, function(req,res){
+	res.render('pages/createlisting', {title: "Create listing", cur: req.session.user});
+})
+
 app.get('/editprofile', user, users.showEdit);
 app.get('/adminEditProfile', admin, users.showAdminEdit);
 app.get('/editlisting', user, listings.showEdit);
