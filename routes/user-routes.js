@@ -117,6 +117,10 @@ exports.adminUpdateUser = function(req, res) {
     console.log('Update User');
     console.log(req.body);
     if(req.body.username){
+            if(req.body.username){
+                 User.update({"username": req.body.username},
+                          { $set:{"username": req.body.username}}, function(err, User){});          
+            }
             if(req.body.email){
                  User.update({"username": req.body.username},
                           { $set:{"email": req.body.email}}, function(err, User){});          
