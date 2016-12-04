@@ -36,14 +36,16 @@ exports.find = function(req, res) {
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
         Listing.find({"user_id": req.query.id}, function(err, data){
-            if (err) throw err;
+            if (err || data == undefined) throw err;
                 res.render('pages/profile', {User:User[0], listings:data, title: req.query.id+"'s "+"Profile"});
             });
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
+            if (err  || User == undefined) throw err;
+
             Listing.find({"username": req.query.username}, function(err, data){
-            if (err) throw err;
+            if (err  || data == undefined) throw err;
                 res.render('pages/profile', {User:User[0], listings:data,
                     title: req.query.username+"'s "+"Profile",
                     Cur:req.session.user,
@@ -52,13 +54,13 @@ exports.find = function(req, res) {
         });
     } else if(req.query.email){
         User.find({"email": req.query.email}, function(err, User) {
-            if (err) {return res.send("");}
+            if (err || User == undefined) {return res.send("");}
             res.send(User);
         });
     }
     else{
         User.find({}, function(err, allUsers) {
-            if (err) throw err;
+            if (err || allUsers == undefined) throw err;
             res.send(allUsers);
         });
     }
@@ -73,7 +75,7 @@ exports.addUser = function(req, res) {
     //console.log("Password? :::  " + newUser.password);
 
     newUser.save(function(err, newUser) {
-        if (err) console.log(err);
+        if (err || User == undefined) console.log(err);
         res.send('Success');
     })
 };

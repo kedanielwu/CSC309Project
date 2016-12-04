@@ -28,7 +28,7 @@ var listingSchema = new Schema(
             type: String, required: true
         },
         date: {
-            type: Date, default: new Date().getDate()
+            type: Date, default: Date.now
         }
     },
     {

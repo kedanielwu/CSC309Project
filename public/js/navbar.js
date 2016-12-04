@@ -6,7 +6,7 @@
         if (data) {
             //IN NAVBAR
             //add admin link
-            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
+            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>"); 
             $("#signup-button").hide();
             $("#login-button").hide();
         }

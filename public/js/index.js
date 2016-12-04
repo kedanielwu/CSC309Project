@@ -2,10 +2,10 @@
     "use strict"; // Start of use strict
 
     $.get('/listings', "", function(data, status) {
-        
+        console.log(JSON.stringify(data));
+        console.log(JSON.stringify(data.sort(GetSortOrder("date"))));
         for (let i=0; i < 12; i++) {
             if (data[i] != undefined) {
-                console.log(JSON.stringify(data[i]));
                 $("#recent").append(
                     "<div class='col-sm-4 col-lg-4 col-md-4' class='recent-row'>"+
                         "<div class='thumbnail'>"+
@@ -22,5 +22,16 @@
             }
         }
     });
+
+    function GetSortOrder(prop) {  
+        return function(a, b) {  
+            if (a[prop] > b[prop]) {  
+                return 1;  
+            } else if (a[prop] < b[prop]) {  
+                return -1;  
+            }  
+            return 0;  
+        }  
+    } 
 
 })(jQuery); // End of use strict
