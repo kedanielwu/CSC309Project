@@ -28,6 +28,8 @@ exports.search = function(req, res){
       if(req.query.sort_by){
         var sort_by = req.query.sort_by.toLowerCase();
 
+        console.log("Sort by ", sort_by);
+
         if(sort_by == 'date'){
           results.sort(function(a, b){
             if (a.date.getTime() > b.date.getTime()){
@@ -43,8 +45,10 @@ exports.search = function(req, res){
         }
         else if(sort_by == 'price'){
           results.sort(function(a, b){
-            return a.price - b.price;
+            return a.price.localeCompare(b.price);
           });
+
+          console.log(results);
         }
         else if(sort_by == 'relevance'){
           // do nothing - sorts by relevance automatically
