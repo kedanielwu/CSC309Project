@@ -10,7 +10,11 @@
         $(".error").text("");
         $("#error-confirm").text("");
 
+            console.log("Search requested");
+
+
         $.get('/search', searchKey+'='+searchText, function(data, status){
+            console.log("Search requested");
             // if (data == "login success") {
             //     window.location.replace("/");
             // } else {

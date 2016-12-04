@@ -9,8 +9,17 @@
     "mongodb": "^2.2.12",
     "mongoose": "^4.6.5",
     "ejs": "^2.5.3",
-    "bcryptjs": "^2.3.0"
-
+    "bcryptjs": "^2.3.0",
+    "express-session": "1.14.2"
+  },
+  "devDependencies": {
+    "react-scripts": "0.7.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
   
 }

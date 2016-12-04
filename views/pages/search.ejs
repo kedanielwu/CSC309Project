@@ -26,7 +26,13 @@
       <form id="sort_results_form">
         <div class="form-group row">  
           <label>Sort by: </label>
-          <input id="sort_by_input" type="select"> 
+            <select class="form-control input-small" id="sort_by_input">
+              <option>Date Created</option>
+              <option>Relevance</option>
+              <% if (key == 'listings') { %>
+              <option>Price</option>
+              <% } %>
+            </select>
         </div>
       </form>
 

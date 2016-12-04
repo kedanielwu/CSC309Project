@@ -24,7 +24,7 @@ exports.search = function(req, res){
     });  
   }
   else{
-    console.log("ERROR: Invalid search params.");
+    console.log("ERROR: Invalid search params.", req.query);
     res.send(400, "ERROR: Invalid search params.");
   }
 }
