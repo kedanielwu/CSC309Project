@@ -26,6 +26,9 @@ var listingSchema = new Schema(
         },
         price: {
             type: String, required: true
+        },
+        date: {
+            type: Date, default: new Date().getDate()
         }
     },
     {
@@ -43,9 +46,11 @@ listingSchema.index(
     description: "text"
   },
   {
-    // Weights
-    title: 5,
-    description: 1
+    weights: {
+      // Weights
+      title: 5,
+      description: 1
+    }
   }
 );
 

@@ -24,11 +24,14 @@ var userSchema = new Schema(
             type: String, default: "http://i.imgur.com/hfH9CiC.png" //url of image
         },
         description: {
-            type: String
+            type: String, default: "Hello! It's nice to meet you :)"
         },
         userType: {
             type: String, required: true
         },
+        registerDate: {
+            type: Date, default: new Date().getDate()
+        }
     },
     {
         collection: 'users'

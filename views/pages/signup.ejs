@@ -8,12 +8,17 @@
 <body id="page-top">
   <% include ../partials/nav %>
     <header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
         <div class="container"  id="signup-form">
             <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <h1 class="section-heading">Sign Up</h1>
                 <form>
-                  
                   <div class="form-group row">
                     <label for="example-text-input" class="col-xs-2 col-form-label">Username</label>
                     <div class="col-xs-10">
@@ -31,27 +36,27 @@
                   <div class="form-group row">
                     <label for="example-tel-input" class="col-xs-2 col-form-label">Phone # (Optional) </label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="tel" id="phone-input" name="phone">
+                      <input class="form-control" type="tel" id="phone-input" name="phoneNumber">
                       <p></p>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="example-password-input" class="col-xs-2 col-form-label">Password</label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="password" id="password-input" name="password">
+                      <input class="form-control" type="password" id="password-input" name="password" placeholder="Must be at least 5 characters">
                       <p class="error" id="error-password"></p>
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="example-password-input" class="col-xs-2 col-form-label">Confirm password</label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="password" id="confirm-password-input" name="confirm-password">
+                      <input class="form-control" type="password" id="confirm-password-input" name="confirm-password" placeholder="Must be at least 5 characters">
                       <p class="error" id="error-confirm"></p>
                     </div>
                   </div>
                     <div class="form-group">
                       <label for="exampleSelect2">Area (Optional, GTA only)</label>
-                      <select multiple class="form-control" id="area-input">
+                      <select multiple class="form-control" id="area-input" name="area">
                         <option>Toronto</option>
                         <option>Mississauga</option>
                         <option>Brampton</option>
@@ -73,6 +78,7 @@
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
+  <script src="../public/js/signup.js"></script>
 
 </body>
 

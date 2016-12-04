@@ -1,3 +1,4 @@
 data
 database
 .DS_Store
+node_modules

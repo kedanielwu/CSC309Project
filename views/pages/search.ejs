@@ -7,30 +7,11 @@
 
 <body id="page-top">
   <% include ../partials/nav %>
-
-<!--     <header>
-        <div class="container">
-            <div class="row">
-                <div class="header-content">
-                    <div class="header-content-inner">
-                        <h1>LOGO is an app that makes selling your things easier. You can post ads, search ads, and buy or trade!
-                        </h1>
-                        <a href="/signup.html" class="btn btn-outline btn-xl page-scroll">Click here to <strong>sign up</strong>!</a>
-                        <br>
-                        <br>
-                        <a href="login.html" class="btn btn-outline btn-xl page-scroll">Already a member? Click here to <strong>login</strong>!</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
-
     <section id="download" class="download bg-primary text-center">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Recent Listings</h2>
-                    <p>See what people in your area are selling!</p>
+                    <h2 class="section-heading">Search Results</h2>
                     <div class="row" id="recent">
 
                     </div>
@@ -39,8 +20,28 @@
         </div>
     </section>
 
+    <section id="search_results" class="bg-primary text-center">
+      <h2 class="section-heading">Showing <%= results.length %> results for '<%= searchText %>'</h2>
+
+      <form id="sort_results_form">
+        <div class="form-group row">  
+          <label>Sort by: </label>
+          <input id="sort_by_input" type="select"> 
+        </div>
+      </form>
+
+      <!-- Render either user or listing results depending on key -->
+      <% if (key == 'users') { %>
+        <% include ../partials/search/user_results %>
+      <% } %>
+      <% if (key == 'listings') { %>
+        <% include ../partials/search/listing_results %>
+      <% } %>
+    </section>
+
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
+  <script src="../public/js/navbar.js"></script>
 
 </body>
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+</head>    
+    <body id="page-top">
+        <% include ../partials/nav %>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h2><%= title %></h2>
+                            <img class="img-rounded" src="<%= picture %>" alt="" style="width:180px;height:180px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h2>Description</h2>
+                            <p><%= description %></p>
+                            <h2>price</h2>
+                            <p><%= price %></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <div id="user_id" class='hidden'><%= user_id %></div>
+                            <div class="col-xs-12 col-sm-12 col-md-12"><h2 id="user_name"></h2></div>
+                            <div class = "col-xs-6 col-md-4">
+                                <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:180px;height:180px;">             
+                            </div>
+                            <div class = "col-xs-6 col-md-4">
+                                <h2>Discription:</h2>
+                                <p id="user_description"></p>                
+                            </div>
+                            <div class = "col-xs-6 col-md-4">
+                                <h2>Contact Information:</h2>
+                                <h3>Phone: </h3>
+                                <p id="user_phone"></p>
+                                <h3>Email: </h3>
+                                <p id="user_email"></p>            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="header-content">
+                        <div class="header-content-inner">
+                            <h1>comments</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../partials/footer.ejs %>
+        <% include ../partials/scripts.ejs %>
+        <script src="../public/js/listing.js"></script>
+        <script src="../public/js/navbar.js"></script>
+
+    </header>
+    </body>

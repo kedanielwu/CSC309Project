@@ -27,7 +27,7 @@ exports.find = function(req, res) {
         Listing.find({"_id": req.query.id}, function(err, data){
             if (err) throw err;
             //array of one listing
-            res.send(data);
+            res.render('pages/listing', data[0]);
         })
     }
     else {
@@ -44,15 +44,19 @@ exports.updateListing = function(req, res){
     if(req.query.id){
         if(req.query.title){
             Listing.update({"_id": req.query.id},
-                        { $set:{"title": req.query.title}});
+                        { $set:{"title": req.query.title}}, function(err, data){});
         }
         if(req.query.description){
                 Listing.update({"_id": req.query.id},
-                        { $set:{"email": req.query.description}});          
+                        { $set:{"email": req.query.description}}, function(err, data){});          
         }
         if(req.query.status){
                 Listing.update({"_id": req.query.id},
-                        { $set:{"email": req.query.status}});          
+                        { $set:{"email": req.query.status}}, function(err, data){});          
+        }
+        if(req.query.picture){
+                Listing.update({"_id": req.query.id},
+                        { $set:{"picture": req.query.picture}}, function(err, data){});          
         }
         res.send("Updated");
     } else {

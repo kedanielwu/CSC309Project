@@ -1,6 +1,25 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    // Attach search form(s) to backend
+    $('#search_form').submit(function(event) {
+        event.preventDefault();
+        
+        let searchText = $("#search_text_input").val();
+        let searchKey = $("#search_key_input").val();
+        $(".error").text("");
+        $("#error-confirm").text("");
+
+        $.get('/search', searchKey+'='+searchText, function(data, status){
+            // if (data == "login success") {
+            //     window.location.replace("/");
+            // } else {
+            //     $("#error-confirm").text("Username and/or password are invalid.")
+            // }
+        });
+        //TODO: validate for security? does mongo take care of this?
+    });
+
     $.get('/currentUser', "", function(data, status) { //check if current user has signed up
         if (data) {
             $("#welcome").text("Welcome back, "+data+"!");

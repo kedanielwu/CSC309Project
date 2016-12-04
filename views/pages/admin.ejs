@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include ../partials/head %>
+      <!-- Bootstrap Core CSS -->
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+    <link href="../../public/css/sb-admin.css" rel="stylesheet">
+    <link href="../../public/css/new-age.css" rel="stylesheet">
+    
+</head>
+
+<body id="page-top">
+  <% include ../partials/nav %>
+  
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar-inverse navbar-fixed-top" role="navigation" >
+        
+
+            <div class="collapse navbar-collapse navbar-ex1-collapse" >
+                <ul class="nav navbar-nav side-nav" id="top">
+                    <li  style="margin-left: 25px;">
+                        <h3>&#9;<u>DB Information</u></h3>
+                        <p id="total-users">Total Users: </p>
+                        <!-- <p ></p> -->
+                        <p id="total-listings">Total Listings</p>
+                        <!-- <p ></p> -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <h1 style="margin-bottom: 0px;">
+                    Modify Database
+                </h1>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header" style="margin-top: 10px;">
+                            <small>Populate</small>
+                        </h1>
+                        <!-- Insert input box -->
+                        <h5 style="font-size: 16px; line-height: 20px">Type array of JSON user objects to enter into User collection.
+                        <br> 
+                            Array must be of valid format for all JSON objects to be inserted. 
+                            Valid format is the following: 
+                            <br>
+                            [ {"username": "", "email": "","password": "",
+                              "area": "","phoneNumber": "","picture": "","description": "", <br> "userType": ""}, ... ]
+                        </h5>
+                         <textarea style="width: 60%; min-height: 200px; color:black" id="pop-input" placeholder="Enter JSON array"></textarea> 
+                         <br>
+                         <a class="btn btn-outline btn-xl" id="pop-database" style="margin-top:10px;">Populate database</a>
+                         <br>
+                         <p class="error" id="pop-confirm" style="width: 35%; text-align: center;"></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            <small>Delete</small>
+                        </h1>
+                        <a class="btn btn-outline btn-xl" id="delete-database">Delete database</a>
+                        <h5>Deleting the database will delete <strong>all</strong> non-admin users and listings. This cannot be reversed.</h5>
+                        <br>
+                        <p class="error" id="delete-confirm" style="width: 35%; text-align: center;"></p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <% include ../partials/footer.ejs %>
+  <% include ../partials/scripts.ejs %>
+  
+  <script src="../public/js/navbar.js"></script>
+  <script src="../public/js/admin.js"></script>
+
+</body>
+
+</html>

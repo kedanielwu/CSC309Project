@@ -1,5 +1,13 @@
 var User = require('../models/users');
 var Listing = require('../models/listings');
+var bcrypt = require('bcryptjs');
+
+exports.showEdit = function(req, res){
+    console.log(req.session.user);
+    User.find({"username": req.session.user}, function(err, User) {
+         res.render('pages/EditProfile', {title: "Edit Your Profile", User:User[0]});
+    });
+}
 
 /**
  * Finds users.
@@ -13,34 +21,28 @@ exports.find = function(req, res) {
 
     if(req.query.id){
         User.find({"_id": req.query.id}, function(err, User) {
-		Listing.find({"user_id": req.query.id}, function(err, data){
+        Listing.find({"user_id": req.query.id}, function(err, data){
             if (err) throw err;
-            		listings = data;
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.id+"'s "+"Profile"});
         	});
-		console.log(listings);
-            if (err) {return res.send("");}
-            res.send(User);
-            // res.render('views/profile', {User:User[0],listings:listings});
         });
     } else if(req.query.username){
         User.find({"username": req.query.username}, function(err, User) {
-            if (err) {return res.send("");}
-            // console.log(User)
-            res.send(User);
+            Listing.find({"username": req.query.username}, function(err, data){
+            if (err) throw err;
+                res.render('pages/profile', {User:User[0], listings:data, title: req.query.username+"'s "+"Profile", Cur:req.session.user});
+            });
         });
     } else if(req.query.email){
         User.find({"email": req.query.email}, function(err, User) {
             if (err) {return res.send("");}
-            // console.log(User)
             res.send(User);
-            // res.render('profile', User);
         });
     }
     else{
         User.find({}, function(err, allUsers) {
-        if (err) throw err;
-        // console.log(allUsers)
-        res.send(allUsers);
+            if (err) throw err;
+            res.send(allUsers);
         });
     }
 };
@@ -49,8 +51,9 @@ exports.find = function(req, res) {
 //Can also add with query if we would rather do that
 exports.addUser = function(req, res) {
     console.log("adding User");
-    console.log(req.body);
     var newUser = new User(req.body);
+    newUser.password = bcrypt.hashSync(newUser.password, Math.random());
+    //console.log("Password? :::  " + newUser.password);
 
     newUser.save(function(err, newUser) {
         if (err) console.log(err);
@@ -58,36 +61,35 @@ exports.addUser = function(req, res) {
     })
 };
 
-
 exports.updateUser = function(req, res) {
     console.log('Update User');
-    console.log(req.query);
-    if(req.query.id){
-            if(req.query.name){
-                User.update({"_id": req.query.id},
-                          { $set:{"name": req.query.name}}, function(err, User){});
+    console.log(req.body);
+    if(req.session.user){
+            if(req.body.email){
+                 User.update({"username": req.session.user},
+                          { $set:{"email": req.body.email}}, function(err, User){});          
             }
-            if(req.query.email){
-                 User.update({"_id": req.query.id},
-                          { $set:{"email": req.query.email}}, function(err, User){});          
+            if(req.body.password && req.body.password != ''){
+                 User.update({"username": req.session.user},
+                          { $set:{"password": bcrypt.hashSync(req.body.password, Math.random())}}, function(err, User){});          
             }
-            if(req.query.password){
-                 User.update({"_id": req.query.id},
-                          { $set:{"password": req.query.password}}, function(err, User){});          
+            if(req.body.picture){
+                 User.update({"username": req.session.user},
+                          { $set:{"picture": req.body.picture}}, function(err, User){});          
             }
-            if(req.query.picture){
-                 User.update({"_id": req.query.id},
-                          { $set:{"picture": req.query.picture}}, function(err, User){});          
+            if(req.body.description){
+                 User.update({"username": req.session.user},
+                          { $set:{"description": req.body.description}}, function(err, User){});          
             }
-            if(req.query.description){
-                 User.update({"_id": req.query.id},
-                          { $set:{"description": req.query.description}}, function(err, User){});          
+            if(req.body.userType){
+                 User.update({"username": req.session.user},
+                          { $set:{"userType": req.body.userType}}, function(err, User){});          
             }
-            if(req.query.userType){
-                 User.update({"_id": req.query.id},
-                          { $set:{"userType": req.query.userType}}, function(err, User){});          
+            if(req.body.area){
+                 User.update({"username": req.session.user},
+                          { $set:{"area": req.body.area}}, function(err, User){});          
             }
-            res.send("Updated");
+            res.redirect("/users?username=" + req.session.user);
     }
     else{
         console.log("Error: user id given to update");
@@ -98,17 +100,25 @@ exports.updateUser = function(req, res) {
 exports.removeUser = function(req, res) {
     console.log('Remove User');
 
-    if(req.query.id){
+    if(req.query.all){ 
+        User.remove({"userType": "user"}, function(err, User) { //shouldn't be removing admins
+            if (err) throw err;
+            console.log("All users deleted");
+        });
+
+        Listing.remove({}, function(err, Listing) {
+            if (err) throw err;
+            console.log("All listings deleted");
+            res.send("Database wiped.");
+        });
+    } else if (req.query.id){
         User.remove({"_id": req.query.id}, function(err, User) {
             if (err) throw err;
             console.log(User)
             res.send(User);
-        });
-    }
-    else{
-      
+        });        
+    } else{
         console.log("Error: need user id")
-
     }
 };
 
