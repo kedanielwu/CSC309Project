@@ -1,14 +1,6 @@
 (function($) {
     "use strict"; // Start of use strict
 
-    $.get('/currentUser', "", function(data, status) { //check if current user has signed up
-        if (data) {
-            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
-            $("#navbar").append("<li><a class='page-scroll' href='/profile?username='"+data+">PROFILE</a></li>");
-            $("#navbar").append("<li><a class='page-scroll' href='/logout'>LOGOUT</a></li>");
-        }
-    });
-
     $('#delete-database').on('click', function(event) {
         event.preventDefault();
         // $.delete("/users","?id=all", function(data, status) {

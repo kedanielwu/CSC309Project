@@ -18,6 +18,7 @@
         } 
         if (username && password) {
             $.get('/loginCheck', 'username='+username+'&password='+password, function(data, status){
+                // alert(data);
                 if (data) {
                     window.location.replace("/");
                 } else {

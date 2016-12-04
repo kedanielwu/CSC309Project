@@ -9,6 +9,7 @@ exports.login = function(req, res) {
     } else {
         User.find({"username": req.query.username}, function(err, User) {
             if (err || User[0] == undefined) {
+                console.log("not found");
                 return res.send("");
             } else if (User[0].userType == "admin" &&
                 bcrypt.compareSync(req.query.password, User[0].password)) {
@@ -16,6 +17,7 @@ exports.login = function(req, res) {
                 req.session.ifAdmin = true;
                 req.session.user = req.query.username;
                 req.session.admin = true;
+                console.log("not found1");
                 return res.send("admin login success");
             } else if (User[0].userType == "user" && 
                 bcrypt.compareSync(req.query.password, User[0].password)) {
@@ -23,8 +25,10 @@ exports.login = function(req, res) {
                 req.session.ifAdmin = false;
                 req.session.user = req.query.username;
                 req.session.admin = true;
+                console.log("not found2");
                 return res.send("user login success");
             } else {
+                console.log("not found3");
                 return res.send("");
             }
         });
