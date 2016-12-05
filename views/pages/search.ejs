@@ -22,16 +22,19 @@
 
     <section id="search_results" class="download bg-primary text-center">
       <div class="container">
-        <h2 class="section-heading">Showing <%= results.length %> results for '<%= searchText %>'</h2>
+        <h2 class="section-heading">Showing <%= results.length %> results for <i id="search_text">'<%= searchText %>'</i> </h2>
 
         <form id="sort_results_form">
           <div class="form-group">  
             <label>Sort by: </label>
             <select class="form-control input-small" id="sort_by_input">
-              <option>Date Created</option>
-              <option>Relevance</option>
+              <option value='relevance'>Relevance</option>
+              <% if (key == 'users') { %>
+              <option value='username'>Username</option>
+              <% } %>
               <% if (key == 'listings') { %>
-              <option>Price</option>
+              <option value='price'>Price</option>
+              <option value='date'>Date Created</option>
               <% } %>
             </select>
           </div>
@@ -50,6 +53,9 @@
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
+
+  <!-- Search -->
+  <script src="../../public/js/search_results.js"></script>
 
 </body>
 

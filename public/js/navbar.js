@@ -1,12 +1,31 @@
 (function($) {
     "use strict"; // Start of use strict    
 
+    // Attach search form(s) to backend
+    $('#search_form').submit(function(event) {
+        event.preventDefault();
+        
+        let searchText = $("#search_text_input").val().trim();
+        let searchKey = $("#search_key_input").val();
+        // cache
+        localStorage['searchText'] = searchText;
+        localStorage['searchKey'] = searchKey;
+
+        console.log("Search requested");
+
+        let param_string = searchKey.toLowerCase()+'='+searchText.toLowerCase();
+
+        $.get('/search', param_string, function(data, status){
+            window.location.replace("/search?" + param_string);
+        });
+    });
+    
     $.get('/currentUserType', "", function(data, status) {
         // alert(data);
         if (data) {
             //IN NAVBAR
             //add admin link
-            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>");
+            $("#navbar").append("<li><a class='page-scroll' href='/admin'>DASHBOARD</a></li>"); 
             $("#signup-button").hide();
             $("#login-button").hide();
         }
@@ -18,6 +37,8 @@
         }
         else if (data) {
             //IN NAVBAR
+            //add create posting link
+            $("#navbar").append("<li><a class='page-scroll' href='/createlisting'>POST</a></li>");
             //add profile link
             $("#navbar").append("<li><a class='page-scroll' href='/users?username="+data+"'>PROFILE</a></li>");
             //add logout link
