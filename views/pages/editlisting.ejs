@@ -17,9 +17,9 @@
                 <h1 class="section-heading">Edit Your Profile</h1>
                 <form id="updateProfile" action="/updateListing" method="POST">
                   <div class="form-group row">
-                    <label for="example-text-input" class="col-xs-2 col-form-label " >Username</label>
+                    <label for="example-text-input" class="col-xs-2 col-form-label " >Title</label>
                     <div class="col-xs-10">
-                      <input class="form-control" type="text" id="title-input" name="title" value="<%= Listing.title %>" disabled>
+                      <input class="form-control" type="text" id="title-input" name="title" value="<%= Listing.title %>">
                       <p class="error" id="error-title"></p>
                     </div>
                   </div>
