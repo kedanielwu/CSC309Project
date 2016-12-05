@@ -45,7 +45,9 @@ exports.search = function(req, res){
         }
         else if(sort_by == 'price'){
           results.sort(function(a, b){
-            return a.price.localeCompare(b.price);
+            price1 = parseInt(a.price.substring(1,a.price.length));
+            price2 = parseInt(b.price.substring(1,b.price.length));
+            return price1 - price2;
           });
 
           console.log(results);
@@ -67,24 +69,66 @@ exports.search = function(req, res){
 // Full text search for listings - sort by relevance by default
 function searchListings(searchText, callback){
   results = [];
-  Listing.find(
+
+  if(searchText == ""){
+    Listing.find({}, function (err, results){
+      if (err || results == undefined) throw err;
+
+      console.log("Searched for: ", searchText);
+
+      callback(results); // only way to pass data from async callback
+    });
+  }
+  else{
+    Listing.find(
+      {
+        $text: {
+          $search: searchText,
+          $caseSensitive: false
+        }
+      },
+      {
+        // Project a field to get text score value
+        score: {
+          $meta: "textScore"
+        }
+      })
+      .sort(
+      {
+        // Sort by score
+        score: {
+          $meta: "textScore"
+        }
+      })
+      .exec(function(err, results){
+        if (err || results == undefined) throw err;
+
+        console.log("Searched for: ", searchText);
+
+        callback(results); // only way to pass data from async callback
+      });
+  }
+}
+
+// Full text search for listings
+function searchUsers(searchText, callback){
+  results = [];
+
+  if(searchText == ""){
+    Listing.find({}, function (err, results){
+      if (err || results == undefined) throw err;
+
+      console.log("Searched for: ", searchText);
+
+      callback(results); // only way to pass data from async callback
+    });
+  }
+  else{
+    User.find(
     {
-      $text: {
-        $search: searchText,
-        $caseSensitive: false
-      }
-    },
-    {
-      // Project a field to get text score value
-      score: {
-        $meta: "textScore"
-      }
-    })
-    .sort(
-    {
-      // Sort by score
-      score: {
-        $meta: "textScore"
+      "username": { //TODO: search by username
+        $regex: ".*" + searchText + ".*",
+        $options: "i" // case insensitive
       }
     })
     .exec(function(err, results){
@@ -93,48 +137,7 @@ function searchListings(searchText, callback){
       console.log("Searched for: ", searchText);
       //console.log(results);
 
-      //return results;
-      callback(results); // only way to pass data from async callback
-    })
-
-  // Listing.find(
-  //   {
-  //     $text: {
-  //       $search: searchText,
-  //       $caseSensitive: false
-  //     }
-  //   })
-  //   .exec(function(err, results){
-  //     if (err || results == undefined) throw err;
-
-  //     console.log("Searched for: ", searchText);
-  //     //console.log(results);
-
-  //     //return results;
-  //     callback(results); // only way to pass data from async callback
-  //   })
-
-  //return results;
-}
-
-// Full text search for listings
-function searchUsers(searchText, callback){
-  results = [];
-
-  User.find(
-  {
-    "username": { //TODO: search by username
-      $regex: ".*" + searchText + ".*",
-      $options: "i" // case insensitive
-    }
-  })
-  .exec(function(err, results){
-    if (err || results == undefined) throw err;
-
-    console.log("Searched for: ", searchText);
-    //console.log(results);
-
-    callback(results);
-    //return results;
-  })
+      callback(results);
+    });
+  }
 }

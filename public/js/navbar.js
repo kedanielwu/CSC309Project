@@ -10,6 +10,7 @@
         // cache
         localStorage['searchText'] = searchText;
         localStorage['searchKey'] = searchKey;
+        localStorage['sortBy'] = "relevance";
 
         console.log("Search requested");
 
@@ -19,7 +20,7 @@
             window.location.replace("/search?" + param_string);
         });
     });
-    
+
     $.get('/currentUserType', "", function(data, status) {
         // alert(data);
         if (data) {
