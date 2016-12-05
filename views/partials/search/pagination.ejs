@@ -7,6 +7,6 @@
     <%} else{ %>
     <li class="page">
     <% } %>
-    <a href="/search?<%=key.substring(0, key.length-1)%>=<%=searchText%>&page=<%=i+1%>"><%= i + 1 %></a></li>
+    <a href="/search?<%=key.substring(0, key.length-1)%>=<%=searchText%>&sort_by=<%=sortBy%>&order_by=<%=orderBy%>&page=<%=i+1%>"><%= i + 1 %></a></li>
   <% } %>
 </ul>
