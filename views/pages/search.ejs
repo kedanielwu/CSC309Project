@@ -8,24 +8,10 @@
 <body id="page-top">
   <% include ../partials/nav %>
    <header>
-
-<!--     <section id="download" class="download bg-primary text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Search Results</h2>
-                    <div class="row" id="recent">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
     <section id="search_results" class="text-center">
       <div class="container">
-        <h2>Search Results</h2>
-        <p class="section-heading">Showing <%= results.length %> results for <i id="search_text">'<%= searchText %>'</i><p>
+        <h2>SEARCH RESULTS</h2>
+        <p class="section-heading">Showing <%= first %> - <%= last %> of <%= numTotalResults %> total results for <i id="search_text">'<%= searchText %>'</i><p>
         <form id="sort_results_form text-center">
           <div class="form-group">  
             <label>Sort by: </label>
@@ -42,8 +28,10 @@
           </div>
         </form>
 
+        <!-- Pagination -->
+        <% include ../partials/search/pagination %>
+
         <!-- Render either user or listing results depending on key -->
-        
         <% if (key == 'users') { %>
           <% include ../partials/search/user_results %>
         <% } %>
@@ -51,13 +39,8 @@
           <% include ../partials/search/listing_results %>
         <% } %>
 
-        <ul class="pagination">
-          <li><a href="#">1</a></li>
-          <li class="active"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li><a href="#">4</a></li>
-          <li><a href="#">5</a></li>
-        </ul>
+        <!-- Pagination -->
+        <% include ../partials/search/pagination %>
       </div>
     </section>
   </header>

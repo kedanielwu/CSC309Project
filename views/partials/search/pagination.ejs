@@ -1,0 +1,12 @@
+<!-- views/partials/search/pagination.ejs -->
+
+<ul class="pagination">
+  <% for(var i=0; i < numPages; i++) { %>
+    <% if(i+1 == pageNumber){%>
+    <li class="page active">
+    <%} else{ %>
+    <li class="page">
+    <% } %>
+    <a href="/search?<%=key.substring(0, key.length-1)%>=<%=searchText%>&page=<%=i+1%>"><%= i + 1 %></a></li>
+  <% } %>
+</ul>
