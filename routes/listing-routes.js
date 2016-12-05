@@ -63,9 +63,15 @@ exports.updateListing = function(req, res){
 
 exports.postComment = function(req, res){
     console.log("POST /comment received");
-    if (req.query.id && req.query.userID && req.query.comment){
-        Listing.update({"_id": req.query.id}, 
-        { $push: {"comments": {"user_id": req.query.userID, "message": req.query.comment}}});
+    console.log(req.body);
+    if (req.body.id && req.body.user_id && req.body.message){
+        Listing.find({_id: req.body.id}, function(err, data){
+            if (err) throw err;
+            var new_comments = data[0].comments;
+            new_comments.push({user_id: req.body.user_id, message: req.body.message});
+            Listing.update({_id: req.body.id}, { $set: {comments: new_comments}}, function(err, data){});
+            res.redirect("/listings?id=" + req.body.id);
+        })
     } else {
         res.send(400, "Error: wrong request format")
     }

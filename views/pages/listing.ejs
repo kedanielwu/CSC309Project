@@ -60,7 +60,27 @@
                 <div class="col-sm-12">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <h1>comments</h1>
+                            <h1>Comments</h1>
+                            <table>
+          		    <% for(var i=0; i<Listing.comments.length; i++) {%>
+          		      <tr>
+                      <td class="col-md-6 col-md-offset-3">
+                        <p>User: <%= Listing.comments[i].user_id %>
+                      </td>
+                      <td class="col-md-6 col-md-offset-3" style="color: Chartreuse;">
+                        <p>Message: <%= Listing.comments[i].message %>
+                      </td>
+                    </tr> 
+          		    <% } %>
+          		    </table> 
+                        <% if(Cur) {%>
+                            <form action='/comments' method="POST">
+                                <input class="form-control hidden" type="text" name="id" value="<%= Listing._id %>">
+                                <input class="form-control hidden" type="text" id="user_id" name="user_id" value="<%= Cur %>">
+                                <input class="form-control" type="text" id="message-input" name="message">
+                            <input type="submit" class="btn btn-primary" value="Post Comment" />
+                            </form>
+                        <% } %>
                         </div>
                     </div>
                 </div>
