@@ -15,16 +15,13 @@
                         <div class="header-content-inner">
                             <h2><%= title %></h2>
                             <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
-<<<<<<< HEAD
-                            <% if(Cur === Listing.username || (isAdmin)) {%>
-=======
-                            <% if(Cur && Cur === Listing.username && !(isAdmin)) {%>
->>>>>>> ea714571d872e41d958fadea130aab2d9f72fd19
+                            <% if(Cur && Cur === Listing.username || (isAdmin)) {%>
                             <form action="/editlisting" id="edit-listing">
                               <br>
                               <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
                               <input type="submit" class="btn btn-primary" value="Edit" />
                             </form>
+                            <button id="delete" class="btn btn-primary">Delete</button>
                             <% } %>
                         </div>
                     </div>

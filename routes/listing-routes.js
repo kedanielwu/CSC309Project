@@ -27,6 +27,10 @@ exports.find = function(req, res) {
         Listing.find({"_id": req.query.id}, function(err, data){
             if (err) throw err;
             //array of one listing
+            if (!data[0]){
+                res.send(404, "Not found");
+                return;
+            }
             res.render('pages/listing', {title: data[0].title, Cur: req.session.user, Listing: data[0], isAdmin: req.session.ifAdmin});
         })
     }
@@ -79,11 +83,11 @@ exports.postComment = function(req, res){
 
 exports.removeListing = function(req, res){
     console.log("DELETE /listing received");
-    if (req.query.id){
-        Listing.remove({"_id": req.query.id}, function(err, data){
+    if (req.body.id){
+        Listing.remove({"_id": req.body.id}, function(err, data){
             if (err) throw err;
             console.log(data);
-            res.send(200, "Success");
+            res.send(200, "DELETE");
         })
     } else {
         res.send(400, "Error: wrong request format");

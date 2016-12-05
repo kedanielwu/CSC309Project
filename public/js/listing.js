@@ -10,4 +10,17 @@ $(document).ready(function () {
             $("#profilePicture").attr("src", user.picture);
         }
     );
+
+    $("#delete").click(function (e) { 
+        e.preventDefault();
+        $.ajax({
+            type: "delete",
+            url: "/listing",
+            data: {id: $("#listing_id").text()},
+            dataType: "dataType",
+            success: function (response) {
+                console.log("success");
+            }
+        });
+    });
 });
