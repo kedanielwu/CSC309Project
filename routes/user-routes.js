@@ -116,6 +116,10 @@ exports.updateUser = function(req, res) {
                  User.update({"username": req.session.user},
                           { $set:{"area": req.body.area}}, function(err, User){});          
             }
+             if(req.body.phoneNumber){
+                 User.update({"username": req.session.user},
+                          { $set:{"phoneNumber": req.body.phoneNumber}}, function(err, User){});          
+            }
             res.redirect("/users?username=" + req.session.user);
     }
     else{
