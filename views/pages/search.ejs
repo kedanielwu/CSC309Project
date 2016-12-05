@@ -12,10 +12,10 @@
       <div class="container">
         <h2>SEARCH RESULTS</h2>
         <p class="section-heading">Showing <%= first %> - <%= last %> of <%= numTotalResults %> total results for <i id="search_text">'<%= searchText %>'</i><p>
-        <form id="sort_results_form text-center">
+        <form id="sort_results_form" class="text-center">
           <div class="form-group">  
             <label>Sort by: </label>
-            <select align="center" id="sort_by_input">
+            <select class="input-sm" align="center" id="sort_by_input">
               <option value='relevance'>Relevance</option>
               <% if (key == 'users') { %>
               <option value='username'>Username</option>
@@ -25,6 +25,11 @@
               <option value='date'>Date Created</option>
               <% } %>
             </select>
+            <select class="input-sm" align="center" id="order_by_input">
+              <option value='asc'>Asc</option>
+              <option value='desc'>Desc</option>
+            </select>
+            <button class='btn btn-sm btn-default' type="submit">GO</button>
           </div>
         </form>
 

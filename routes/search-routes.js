@@ -8,9 +8,10 @@ exports.search = function(req, res){
   if(req.query.hasOwnProperty('user')){
     searchUsers(req.query.user, function(results){
       // sorting
-      if(req.query.sort_by){
+      if(req.query.sort_by && req.query.order_by){
         var sortBy = req.query.sort_by.toLowerCase();
-        results = sortUsers(results, sortBy);
+        var orderBy = (req.query.order_by.toLowerCase() == 'desc') ? -1 : 1; //asc by default
+        results = sortUsers(results, sortBy, orderBy);
       }
 
       // get metrics
@@ -36,6 +37,8 @@ exports.search = function(req, res){
           first: first+1,
           last: last,
           numTotalResults: numTotalResults,
+          sortBy: sortBy,
+          orderBy: orderBy,
           title: "Search Results"
         });
     });
@@ -43,9 +46,11 @@ exports.search = function(req, res){
   else if (req.query.hasOwnProperty('listing')){
     searchListings(req.query.listing, function(results){
       // sorting
-      if(req.query.sort_by){
+      if(req.query.sort_by && req.query.order_by){
         var sortBy = req.query.sort_by.toLowerCase();
-        results = sortListings(results, sortBy);
+        var orderByText = req.query.order_by.toLowerCase();
+        var orderBy = (orderByText == 'desc') ? -1 : 1; //asc by default
+        results = sortListings(results, sortBy, orderBy);
       }
 
       // get metrics
@@ -71,6 +76,8 @@ exports.search = function(req, res){
           first: first+1,
           last: last,
           numTotalResults: numTotalResults,
+          sortBy: sortBy,
+          orderBy: orderByText,
           title: "Search Results"
         });
     });  
@@ -81,10 +88,10 @@ exports.search = function(req, res){
   }
 }
 
-function sortUsers(users, sortBy){
+function sortUsers(users, sortBy, orderBy){
   if(sortBy == 'username'){
     return users.sort(function(a, b){
-      return a.username.localeCompare(b.username);
+      return a.username.localeCompare(b.username)*orderBy;
     });
   }
   else if(sortBy == 'relevance'){
@@ -93,14 +100,14 @@ function sortUsers(users, sortBy){
   }
 }
 
-function sortListings(listings, sortBy){
+function sortListings(listings, sortBy, orderBy){
   if(sortBy == 'date'){
     return listings.sort(function(a, b){
       if (a.date.getTime() > b.date.getTime()){
-        return 1;
+        return 1*orderBy;
       } 
       else if(a.date.getTime() < b.date.getTime()){
-        return -1;
+        return -1*orderBy;
       }
       else {
         return 0;
@@ -111,7 +118,7 @@ function sortListings(listings, sortBy){
     return listings.sort(function(a, b){
       price1 = parseInt(a.price.substring(1,a.price.length));
       price2 = parseInt(b.price.substring(1,b.price.length));
-      return price1 - price2;
+      return (price1 - price2)*orderBy;
     });
 
     console.log(listings);
