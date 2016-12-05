@@ -536,7 +536,10 @@ body {
   font:20px Georgia, Garamond, Serif;
   overflow:auto;
 }
-#comments {
-  padding: 50px;
+#comments, #seller {
+  padding: 5px;
   background-color: #05141A;
+}
+#comments {
+  padding: 25px;
 }

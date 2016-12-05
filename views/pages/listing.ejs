@@ -17,22 +17,21 @@
             <div class="row">
                 <div class="col-sm-5">
                     <center>
-                        <h2><%= title %></h2>
+                        <h3><%= title %></h3>
                         <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
                     </center>
-                    <% if(Cur === Listing.username && !(isAdmin)) {%>
-                    <form action="/editlisting" id="edit-listing">
-                      <br>
-                      <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
-                      <input type="submit" class="btn btn-primary" value="Edit" />
-                    </form>
-                    
-                    <form action="/deletelisting" id="del-listing">
-                      <br>
-                      <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
-                      <input type="submit" class="btn btn-primary" value="Delete" />
-                    </form>
-                    <% } %>
+                        <% if(Cur && Cur === Listing.username && !(isAdmin)) {%>
+                        <form action="/editlisting" id="edit-listing">
+                          <br>
+                          <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
+                          <input type="submit" class="btn btn-primary" value="Edit" />
+                        </form>
+                        <form action="/deletelisting" id="del-listing">
+                          <br>
+                          <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
+                          <input type="submit" class="btn btn-primary" value="Delete" />
+                        </form>
+                        <% } %>
                 </div>
                 <div class="col-sm-5">
                     <br>
@@ -43,22 +42,33 @@
                     <h2><%= Listing.price %></h2>
                 </div>
             </div>
-            <div id="user_id" class='hidden'><%= Listing.username %></div>
-                <h2 id="user_name"></h2>
-            <right>
-            <div class = "col-xs-6 col-md-3">
-                <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:150%;height:150%;">
-            </div>
-            <div class = "col-xs-6 col-md-5">
-                <h1>Contact Information:</h1>
-                <h4>Phone: </h4>
-                <p id="user_phone"></p>
-                <h4>Email: </h4>
-                <p id="user_email"></p>            
-            </div>
-            </right>
+
         </div>
         </header>
+            <div class="col-sm-12"  id="seller">
+                <div class="header-content" >
+                    <div class="header-content-inner">
+                    
+                        <div id="user_id" class='hidden'><%= Listing.username %></div>
+                            <h2 id="user_name"  style="margin-left: 115px; color:white"></h2>
+                        <right>
+                        <div class = "col-xs-6 col-md-3">
+                            <center >
+                                <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:50%;height:50%;">
+                            </center>
+                        </div>
+                    
+                        <div class = "col-xs-6 col-md-5" style="color:white">
+                            <h1>Contact Information:</h1>
+                            <h5>Phone: <p id="user_phone"></p></h5>
+                            <h5>Email: <p id="user_email"></p></h5>
+                                  
+                        </div>
+                        </right>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-sm-12"  id="comments">
                 <div class="header-content" >
                     <div class="header-content-inner">
@@ -96,3 +106,4 @@
 
     </header>
     </body>
+
