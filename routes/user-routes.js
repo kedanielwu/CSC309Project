@@ -2,6 +2,7 @@ var User = require('../models/users');
 var Listing = require('../models/listings');
 var bcrypt = require('bcryptjs');
 
+
 exports.showEdit = function(req, res){
     console.log(req.session.user);
     User.find({"username": req.session.user}, function(err, User) {

@@ -2,7 +2,6 @@
 # Link - http://198.16.175.249:3000
 
 
-## Instructions
 ### Website Purpose
 Our application is an online classified ad posting service, similar to Kijiji and Craigslist. Users can create accounts and be contacted either by the onsite comment section for each ad listing or by e-mail and phone, provided by the user.
 ### Website Flow Overview
@@ -10,7 +9,7 @@ Our application is an online classified ad posting service, similar to Kijiji an
 Each page contains the navigation bar. This navigation bar allows users to search for both items and users. Once a user is signed in to an account they will also see the options to create a listing, go to their profile, and logout. If the user is an admin they will also see the option to go to the admin dashboard.
 On the home page a non-user has the option to log in or signup. If they are already signed in they will be welcomed. Users will also see recent listings posted to the site.
 ##### Search
-When a user searches for either a user or an ad listing they will be brought to a results page where they can choose how they want to order the results. When a user clicks on one of the results they will be brought to either the listing page or user profile they clicked on.
+From any page, the user can search for other users by keywords and listings by full-text descriptions (matches multiple indexes). A results sorted by relevancy score will appear, and the number of results is modularized by pagination. The user can choose to sort user search results by username and relevancy, and listing search results by date, relevancy, and price. Sorts can be done in ascending or descending order. When a user clicks on one of the results they will be brought to either the listing page or user profile they clicked on. 
 ##### User Profiles
 User profiles display all of the information for a single user, including their username, profile picture, e-mail, phone number (if they provided one), short profile message, and the date the user joined the site. If the user is looking at their own profile they will see a button that when clicked will allow them to edit their profile information, and if the user is an admin they will see a similar button on every profile. Below the users information is a list of the ad listings they have on the site, which link to the actual listing pages.
 ##### Ad Listings
