@@ -3,20 +3,20 @@
 <table>
   <thead>
       <tr>
-          <th class="col-sm-1 text-center">Image</th>
-          <th class="col-sm-1 text-center">Username</th>
-          <th class="col-sm-5 text-center">Description</th>
+          <th class="col-sm-1 text-center"><h4>Image</h4></th>
+          <th class="col-sm-1 text-center"><h4>Username</h4></th>
+          <th class="col-sm-5 text-center"><h4>Description</h4></th>
       </tr>
   </thead>
 
   <tbody>
     <% for(var i=0; i < results.length; i++) { %>
-      <tr class="clickable-row" data-href=/users?username=<%= results[i].username %> >
+      <tr class="clickable-row search-result" data-href=/users?username=<%= results[i].username %> >
         <td>
           <div class="img-result">
             <img src=<%= results[i].picture %> alt="listing-image">
           </div>        </td>
-        <td><%= results[i].username %></td>
+        <td><h4><%= results[i].username %></h4></td>
         <td><%= results[i].description %></td>
       </tr>
     <% } %>

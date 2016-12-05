@@ -18,7 +18,7 @@
                 <div class="col-sm-5">
                     <center>
                         <h2><%= title %></h2>
-                        <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:150%px;height:150%;">
+                        <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
                     </center>
                     <% if(Cur === Listing.username && !(isAdmin)) {%>
                     <form action="/editlisting" id="edit-listing">
@@ -26,9 +26,14 @@
                       <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
                       <input type="submit" class="btn btn-primary" value="Edit" />
                     </form>
+                            <form action="/deletelisting" id="del-listing">
+                      <br>
+                      <input class="form-control hidden" type="text" name="_id" value="<%= Listing._id %>">
+                      <input type="submit" class="btn btn-primary" value="Delete" />
+                    </form>
                     <% } %>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-5">
                     <br>
                     <br>
                     <br>
@@ -36,43 +41,45 @@
                     <p><%= Listing.description %></p>
                     <h2><%= Listing.price %></h2>
                 </div>
-                <div class="col-sm-12">
-                    <div id="user_id" class='hidden'><%= Listing.username %></div>
-                    <!-- <div class="col-xs-12 col-sm-12 col-md-12"> -->
-                        <h2 id="user_name"></h2>
-                    <!-- </div> -->
-                    <div class = "col-xs-6 col-md-4">
-                        <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:150%;height:150%;">             
-                    </div>
-                    <div class = "col-xs-6 col-md-4">
-                        <h2>Contact Information:</h2>
-                        <h3>Phone: </h3>
-                        <p id="user_phone"></p>
-                        <h3>Email: </h3>
-                        <p id="user_email"></p>            
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="header-content">
-                        <div class="header-content-inner">
-                            <h1>Comments</h1>
-                            <table>
-          		    <% for(var i=0; i<Listing.comments.length; i++) {%>
-          		      <tr>
-                      <td class="col-md-6 col-md-offset-3">
-                        <p>User: <%= Listing.comments[i].user_id %>
-                      </td>
-                      <td class="col-md-6 col-md-offset-3" style="color: Chartreuse;">
-                        <p>Message: <%= Listing.comments[i].message %>
-                      </td>
-                    </tr> 
-          		    <% } %>
-          		    </table> 
-                        <% if(Cur) {%>
-                            <form action='/comments' method="POST">
-                                <input class="form-control hidden" type="text" name="id" value="<%= Listing._id %>">
-                                <input class="form-control hidden" type="text" id="user_id" name="user_id" value="<%= Cur %>">
-                                <input class="form-control" type="text" id="message-input" name="message">
+            </div>
+            <div id="user_id" class='hidden'><%= Listing.username %></div>
+                <h2 id="user_name"></h2>
+            <right>
+            <div class = "col-xs-6 col-md-3">
+                <img id="profilePicture" src="" alt="Profile Picture" class="img-rounded" style="width:150%;height:150%;">
+            </div>
+            <div class = "col-xs-6 col-md-5">
+                <h1>Contact Information:</h1>
+                <h4>Phone: </h4>
+                <p id="user_phone"></p>
+                <h4>Email: </h4>
+                <p id="user_email"></p>            
+            </div>
+            </right>
+        </div>
+        </header>
+            <div class="col-sm-12"  id="comments">
+                <div class="header-content" >
+                    <div class="header-content-inner">
+                        <h1 style="color: white;">Comments</h1>
+                        <table>
+                  		    <% for(var i=0; i<Listing.comments.length; i++) {%>
+                  		      <tr>
+                              <td class="col-md-6 col-md-offset-3">
+                                <p>User: <%= Listing.comments[i].user_id %>
+                              </td>
+                              <td class="col-md-6 col-md-offset-3" style="color: Chartreuse;">
+                                <p>Message: <%= Listing.comments[i].message %>
+                              </td>
+                            </tr> 
+              		        <% } %>
+              		    </table> 
+                    <% if(Cur) {%>
+                        <form action='/comments' method="POST">
+                            <input class="form-control hidden" type="text" name="id" value="<%= Listing._id %>">
+                            <input class="form-control hidden" type="text" id="user_id" name="user_id" value="<%= Cur %>">
+                            <input class="form-control" type="text" id="message-input" name="message">
+                            <br>
                             <input type="submit" class="btn btn-primary" value="Post Comment" />
                             </form>
                         <% } %>

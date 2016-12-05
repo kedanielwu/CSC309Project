@@ -7,27 +7,15 @@
 
 <body id="page-top">
   <% include ../partials/nav %>
-<!--     <section id="download" class="download bg-primary text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">Search Results</h2>
-                    <div class="row" id="recent">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <section id="search_results" class="download bg-primary text-center" style="background: url(http://cdn.wallpapersafari.com/15/93/rNKDij.jpg)">
+   <header>
+    <section id="search_results" class="text-center">
       <div class="container">
-        <h2 class="section-heading">Showing <%= results.length %> results for <i id="search_text">'<%= searchText %>'</i> </h2>
-
-        <form id="sort_results_form">
+        <h2>Search Results</h2>
+        <p class="section-heading">Showing <%= results.length %> results for <i id="search_text">'<%= searchText %>'</i><p>
+        <form id="sort_results_form text-center">
           <div class="form-group">  
             <label>Sort by: </label>
-            <select class="form-control input-small" id="sort_by_input">
+            <select align="center" id="sort_by_input">
               <option value='relevance'>Relevance</option>
               <% if (key == 'users') { %>
               <option value='username'>Username</option>
@@ -48,8 +36,17 @@
         <% if (key == 'listings') { %>
           <% include ../partials/search/listing_results %>
         <% } %>
+
+        <ul class="pagination">
+          <li><a href="#">1</a></li>
+          <li class="active"><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+        </ul>
       </div>
     </section>
+  </header>
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
