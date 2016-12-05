@@ -20,11 +20,11 @@
                     <center>
                         <h3><%= title %></h3>
                          <% if(Listing.picture) { %>
-                             <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
+                             <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="height:180px;">
                             <% } else{%>
-                             <img class="img-rounded" src="https://www.retirementhomes.com/homes/static/RHV5/images/default.jpg" alt="" style="width:180px;height:180px;">
+                             <img class="img-rounded" src="https://www.retirementhomes.com/homes/static/RHV5/images/default.jpg" alt="" style="height:180px;">
                             <% } %>
-                            <% if(Cur && Cur === Listing.username && !(isAdmin)) {%>
+
                     </center>
                         <% if(Cur && Cur === Listing.username && !(isAdmin)) {%>
                         <form action="/editlisting" id="edit-listing">
