@@ -3,7 +3,7 @@
 
 
 ## Instructions
-### Website Prupose
+### Website Purpose
 Our application is an online classified ad posting service, similar to Kijiji and Craigslist. Users can create accounts and be contacted either by the onsite comment section for each ad listing or by e-mail and phone.
 ### Website Flow Overview
 ##### Index 
