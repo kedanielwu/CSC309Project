@@ -14,7 +14,12 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h2><%= title %></h2>
-                            <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
+                            
+                            <% if(Listing.picture) { %>
+                             <img class="img-rounded" src="<%= Listing.picture %>" alt="" style="width:180px;height:180px;">
+                            <% } else{%>
+                             <img class="img-rounded" src="https://www.retirementhomes.com/homes/static/RHV5/images/default.jpg" alt="" style="width:180px;height:180px;">
+                            <% } %>
                             <% if(Cur && Cur === Listing.username && !(isAdmin)) {%>
                             <form action="/editlisting" id="edit-listing">
                               <br>
