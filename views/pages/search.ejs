@@ -26,7 +26,7 @@
               <% } %>
             </select>
             <select class="input-sm" align="center" id="order_by_input">
-              <option value='asc'>Asc</option>
+              <option value='asc' selected="selected">Asc</option>
               <option value='desc'>Desc</option>
             </select>
             <button class='btn btn-sm btn-default' type="submit">GO</button>
@@ -52,6 +52,9 @@
 
   <% include ../partials/footer.ejs %>
   <% include ../partials/scripts.ejs %>
+
+  <!-- Search -->
+  <script src="../../public/js/search_results.js"></script>
 
 </body>
 
